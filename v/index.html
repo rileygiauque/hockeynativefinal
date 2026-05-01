@@ -28,6 +28,7 @@
       width: 100%;
       border-radius: 12px;
       margin-top: 15px;
+      background: black;
     }
   </style>
 </head>
@@ -35,46 +36,51 @@
 <body>
   <div class="card">
     <h2>HockeyNative Drill Video</h2>
+
     <video
-  id="video"
-  controls
-  autoplay
-  muted
-  playsinline
-  preload="auto"
-></video>
+      id="video"
+      controls
+      playsinline
+      preload="auto"
+    ></video>
   </div>
 
   <script>
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
 
-  if (!id) {
-    document.body.innerHTML = "<h2>Invalid link</h2>";
-  } else {
-    fetch(`https://fyncbcraeayyrrvfhgdj.supabase.co/rest/v1/shared_videos?id=eq.${id}`, {
-      headers: {
-        apikey: "sb_publishable_q5p6ovKanp6wiciGYd2ZdQ_fhDajPG6",
-        Authorization: "Bearer sb_publishable_q5p6ovKanp6wiciGYd2ZdQ_fhDajPG6",
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.length > 0) {
-          const video = document.getElementById("video");
-video.src = data[0].url;
-video.load();
-video.play().catch(() => {
-  // iOS may still require tap sometimes, but muted autoplay usually works
-});
-        } else {
-          document.body.innerHTML = "<h2>Video not found</h2>";
-        }
+    if (!id) {
+      document.body.innerHTML = "<h2>Invalid link</h2>";
+    } else {
+      fetch(`https://fyncbcraeayyrrvfhgdj.supabase.co/rest/v1/shared_videos?id=eq.${id}`, {
+        headers: {
+          apikey: "sb_publishable_q5p6ovKanp6wiciGYd2ZdQ_fhDajPG6",
+          Authorization: "Bearer sb_publishable_q5p6ovKanp6wiciGYd2ZdQ_fhDajPG6",
+        },
       })
-      .catch(() => {
-        document.body.innerHTML = "<h2>Error loading video</h2>";
-      });
-  }
-</script>
+        .then(res => res.json())
+        .then(data => {
+          if (data.length > 0) {
+            const video = document.getElementById("video");
+
+            const storagePath = data[0].url;
+
+            const videoUrl =
+              `https://fyncbcraeayyrrvfhgdj.supabase.co/storage/v1/object/public/drill-videos/${encodeURI(storagePath)}`;
+
+            console.log("Video URL:", videoUrl);
+
+            video.src = videoUrl;
+            video.load();
+          } else {
+            document.body.innerHTML = "<h2>Video not found</h2>";
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          document.body.innerHTML = "<h2>Error loading video</h2>";
+        });
+    }
+  </script>
 </body>
 </html>
