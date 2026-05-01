@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HockeyNative Drill Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      background: #0a1f36;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: #0b1220;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 24px;
+      max-width: 700px;
+      width: 100%;
+    }
+    video {
+      width: 100%;
+      border-radius: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>HockeyNative Drill Video</h1>
+    <p>Watch this stickhandling drill attempt.</p>
+    <video id="video" controls playsinline></video>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const videoUrl = params.get("video");
+
+    if (videoUrl) {
+      document.getElementById("video").src = videoUrl;
+    }
+  </script>
+</body>
+</html>
