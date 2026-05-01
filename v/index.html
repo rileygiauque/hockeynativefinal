@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HockeyNative Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      background: #0a1f36;
+      color: white;
+      font-family: -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #0b1220;
+      padding: 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 700px;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2>HockeyNative Drill Video</h2>
+    <video id="video" controls></video>
+  </div>
+
+  <script>
+    const id = window.location.pathname.split("/v/")[1];
+
+    fetch(`https://YOUR_PROJECT.supabase.co/rest/v1/shared_videos?id=eq.${id}`, {
+      headers: {
+        apikey: "YOUR_PUBLIC_ANON_KEY",
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.length > 0) {
+          document.getElementById("video").src = data[0].url;
+        } else {
+          document.body.innerHTML = "<h2>Video not found</h2>";
+        }
+      });
+  </script>
+</body>
+</html>
