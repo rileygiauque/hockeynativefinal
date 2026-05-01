@@ -35,7 +35,14 @@
 <body>
   <div class="card">
     <h2>HockeyNative Drill Video</h2>
-    <video id="video" controls></video>
+    <video
+  id="video"
+  controls
+  autoplay
+  muted
+  playsinline
+  preload="auto"
+></video>
   </div>
 
   <script>
@@ -54,7 +61,12 @@
       .then(res => res.json())
       .then(data => {
         if (data.length > 0) {
-          document.getElementById("video").src = data[0].url;
+          const video = document.getElementById("video");
+video.src = data[0].url;
+video.load();
+video.play().catch(() => {
+  // iOS may still require tap sometimes, but muted autoplay usually works
+});
         } else {
           document.body.innerHTML = "<h2>Video not found</h2>";
         }
