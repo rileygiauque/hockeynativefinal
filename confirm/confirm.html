@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Confirmed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #0a1f36;
+      color: white;
+      font-family: -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .box {
+      max-width: 400px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 24px;
+      background: #2563eb;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Email confirmed ✅</h1>
+    <p>Return to HockeyNative app to sign in.</p>
+
+    <a href="stickhandlingnative://email-confirmed" class="btn">
+      Open App
+    </a>
+  </div>
+
+  <script>
+    // Try auto open app (mobile only)
+    setTimeout(() => {
+      window.location.href = "stickhandlingnative://email-confirmed";
+    }, 1000);
+  </script>
+</body>
+</html>
