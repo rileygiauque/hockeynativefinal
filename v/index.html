@@ -39,11 +39,16 @@
   </div>
 
   <script>
-    const id = window.location.pathname.split("/v/")[1];
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
 
-    fetch(`https://YOUR_PROJECT.supabase.co/rest/v1/shared_videos?id=eq.${id}`, {
+  if (!id) {
+    document.body.innerHTML = "<h2>Invalid link</h2>";
+  } else {
+    fetch(`https://fyncbcraeayyrrvfhgdj.supabase.co/rest/v1/shared_videos?id=eq.${id}`, {
       headers: {
-        apikey: "YOUR_PUBLIC_ANON_KEY",
+        apikey: "PASTE_YOUR_ANON_KEY_HERE",
+        Authorization: "Bearer PASTE_YOUR_ANON_KEY_HERE",
       },
     })
       .then(res => res.json())
@@ -53,7 +58,11 @@
         } else {
           document.body.innerHTML = "<h2>Video not found</h2>";
         }
+      })
+      .catch(() => {
+        document.body.innerHTML = "<h2>Error loading video</h2>";
       });
-  </script>
+  }
+</script>
 </body>
 </html>
