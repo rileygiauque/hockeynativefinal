@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset Password | HockeyNative</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #061b31;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      line-height: 36px;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 22px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.95);
+      color: #061b31;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 16px;
+      border: 0;
+      border-radius: 16px;
+      background: white;
+      color: #061b31;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .message {
+      margin-top: 16px;
+      font-weight: 700;
+    }
+
+    .error {
+      color: #ffb4b4;
+    }
+
+    .success {
+      color: #b7ffcc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Create a New Password</h1>
+    <p>Enter your new HockeyNative password below.</p>
+
+    <input id="password" type="password" placeholder="New password" />
+    <input id="confirmPassword" type="password" placeholder="Confirm new password" />
+
+    <button id="submitButton">Update Password</button>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+
+    const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+    const messageEl = document.getElementById("message");
+    const buttonEl = document.getElementById("submitButton");
+
+    function showMessage(text, type) {
+      messageEl.textContent = text;
+      messageEl.className = "message " + type;
+    }
+
+    async function prepareResetSession() {
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      const queryParams = new URLSearchParams(window.location.search);
+
+      const accessToken = hashParams.get("access_token");
+      const refreshToken = hashParams.get("refresh_token");
+      const code = queryParams.get("code");
+
+      if (accessToken && refreshToken) {
+        const { error } = await supabaseClient.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+
+        if (error) {
+          showMessage("This reset link is expired or invalid. Please request a new one.", "error");
+          buttonEl.disabled = true;
+          return;
+        }
+
+        return;
+      }
+
+      if (code) {
+        const { error } = await supabaseClient.auth.exchangeCodeForSession(code);
+
+        if (error) {
+          showMessage("This reset link is expired or invalid. Please request a new one.", "error");
+          buttonEl.disabled = true;
+          return;
+        }
+
+        return;
+      }
+
+      showMessage("This reset link is missing reset information. Please request a new one.", "error");
+      buttonEl.disabled = true;
+    }
+
+    buttonEl.addEventListener("click", async () => {
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password.length < 6) {
+        showMessage("Password must be at least 6 characters.", "error");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showMessage("Passwords do not match.", "error");
+        return;
+      }
+
+      buttonEl.disabled = true;
+      buttonEl.textContent = "Updating...";
+
+      const { error } = await supabaseClient.auth.updateUser({
+        password: password,
+      });
+
+      if (error) {
+        showMessage(error.message, "error");
+        buttonEl.disabled = false;
+        buttonEl.textContent = "Update Password";
+        return;
+      }
+
+      showMessage("Password updated successfully. You can now return to the HockeyNative app and sign in.", "success");
+      buttonEl.textContent = "Password Updated";
+    });
+
+    prepareResetSession();
+  </script>
+</body>
+</html>
