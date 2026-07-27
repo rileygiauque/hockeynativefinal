@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
-  <title>HockeyNative | Fall Stickhandling Challenge</title>
+  <title>HockeyNative | Stickhandling Challenge</title>
 
   <style>
     :root {
       --brand: #0a1f36;
-      --navy-dark: #061527;
-      --navy-card: #0b1627;
-      --blue: #3f6fc4;
-      --blue-light: #78a9df;
-      --gold: #f5c542;
+      --dark: #030712;
       --card: #0b1220;
       --input: #111827;
       --text: #ffffff;
@@ -21,6 +20,7 @@
       --soft: rgba(255, 255, 255, 0.1);
       --border: rgba(255, 255, 255, 0.14);
       --button: #e2e8f0;
+      --blue: #3f6fc4;
       --error: #f87171;
       --success: #22c55e;
     }
@@ -34,15 +34,9 @@
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
+      margin: 0;
       color: var(--text);
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
       background:
         radial-gradient(
           circle at top,
@@ -54,6 +48,12 @@
           #0a1f36 0%,
           #030712 100%
         );
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
     }
 
     body.modal-open {
@@ -66,6 +66,7 @@
     }
 
     img {
+      display: block;
       max-width: 100%;
     }
 
@@ -80,294 +81,167 @@
 
     /*
     =========================================================
-    FALL STICKHANDLING CHALLENGE
+    CHALLENGE HERO
     =========================================================
     */
 
-    .challenge-section {
+    .challenge-hero {
       position: relative;
+      min-height: 600px;
       overflow: hidden;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      background:
-        radial-gradient(
-          circle at 82% 28%,
-          rgba(63, 111, 196, 0.35),
-          transparent 32%
-        ),
+      background-image:
         linear-gradient(
-          135deg,
-          #071a2d 0%,
-          #0b2b4d 100%
-        );
+          90deg,
+          rgba(4, 23, 42, 0.97) 0%,
+          rgba(5, 29, 52, 0.91) 44%,
+          rgba(5, 29, 52, 0.68) 100%
+        ),
+        url("challenge-background.png");
+      background-position: center;
+      background-size: cover;
     }
 
-    .challenge-section::before {
+    .challenge-hero::after {
       content: "";
       position: absolute;
-      right: -150px;
-      bottom: -250px;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .challenge-topbar {
-      padding: 12px 20px;
-      color: white;
-      background: var(--blue);
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 20, 37, 0.05),
+          rgba(3, 18, 33, 0.48)
+        );
     }
 
     .challenge-container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: 100%;
       max-width: 1180px;
+      min-height: 600px;
       margin: 0 auto;
-      padding: 44px 22px 48px;
+      padding: 24px 38px 42px;
     }
 
     .challenge-logo {
-      display: block;
-      width: 290px;
-      height: auto;
-      margin-bottom: 34px;
+      width: 310px;
+      max-width: 55%;
+      margin-bottom: 27px;
     }
 
-    .challenge-grid {
+    .challenge-layout {
       display: grid;
       grid-template-columns:
-        minmax(0, 1.2fr)
-        minmax(300px, 0.8fr);
-      gap: 42px;
+        minmax(0, 1.25fr)
+        minmax(280px, 0.75fr);
+      gap: 22px;
       align-items: center;
     }
 
-    .challenge-eyebrow {
-      margin-bottom: 14px;
-      color: #9ec7f4;
-      text-transform: uppercase;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.14em;
+    .challenge-copy {
+      position: relative;
+      z-index: 3;
     }
 
-    .challenge-title {
-      margin: 0 0 18px;
-      text-transform: uppercase;
-      font-size: clamp(48px, 7.5vw, 88px);
-      line-height: 0.93;
-      letter-spacing: -0.055em;
-    }
-
-    .challenge-title span {
-      display: block;
-      color: var(--blue-light);
-    }
-
-    .challenge-dates {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 22px;
-      padding: 11px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
+    .challenge-copy h1 {
+      max-width: 720px;
+      margin: 0 0 30px;
       color: white;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 16px;
-      font-weight: 800;
+      font-size: clamp(43px, 5.5vw, 68px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
     }
 
-    .challenge-lead {
-      max-width: 700px;
-      margin: 0 0 26px;
-      color: var(--muted);
-      font-size: 19px;
-      line-height: 1.55;
+    .challenge-copy h1 span {
+      display: block;
     }
 
-    .free-banner {
+    .challenge-cta {
       display: flex;
       align-items: center;
-      gap: 18px;
-      width: fit-content;
-      max-width: 100%;
-      margin-bottom: 26px;
-      padding: 17px 22px;
-      border-radius: 16px;
-      color: #071a2d;
-      background:
-        linear-gradient(
-          135deg,
-          #f5c542,
-          #ffd96b
-        );
-      box-shadow:
-        0 12px 32px
-        rgba(245, 197, 66, 0.18);
-    }
-
-    .free-word {
-      font-size: 34px;
-      line-height: 1;
-      font-weight: 1000;
-      letter-spacing: -0.04em;
-    }
-
-    .free-description {
-      font-size: 15px;
-      line-height: 1.3;
-      font-weight: 850;
-    }
-
-    .challenge-register-button {
-      display: inline-flex;
-      align-items: center;
       justify-content: center;
-      min-height: 62px;
-      max-width: 100%;
-      padding: 10px 25px;
+      width: 100%;
+      max-width: 565px;
+      min-height: 82px;
+      padding: 12px 24px;
       border: 0;
       border-radius: 15px;
-      color: #061526;
+      color: #08213b;
       background: white;
-      box-shadow:
-        0 12px 26px
-        rgba(0, 0, 0, 0.22);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.28);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 900;
+      line-height: 1.1;
       text-align: center;
       transition:
         transform 0.18s ease,
         box-shadow 0.18s ease;
     }
 
-    .challenge-register-button:hover {
+    .challenge-cta:hover {
       transform: translateY(-2px);
-      box-shadow:
-        0 17px 31px
-        rgba(0, 0, 0, 0.28);
+      box-shadow: 0 21px 43px rgba(0, 0, 0, 0.34);
     }
 
-    .challenge-register-button span {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      font-size: 16px;
-      font-weight: 900;
+    .challenge-cta:focus-visible {
+      outline: 4px solid rgba(255, 255, 255, 0.38);
+      outline-offset: 4px;
     }
 
-    .challenge-register-button strong {
-      color: #315fae;
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 1000;
-      letter-spacing: 0.12em;
-    }
-
-    .registration-caption {
-      margin-top: 12px;
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 13px;
+    .challenge-dates {
+      margin: 28px 0;
+      color: white;
+      font-size: clamp(19px, 2.2vw, 26px);
       line-height: 1.45;
     }
 
-    .deadline-card {
-      padding: 30px;
-      border: 2px solid var(--gold);
-      border-radius: 24px;
-      background: rgba(5, 18, 33, 0.86);
-      box-shadow:
-        0 24px 55px
-        rgba(0, 0, 0, 0.33);
-      text-align: center;
-    }
-
-    .deadline-label {
-      margin-bottom: 10px;
-      color: var(--gold);
-      text-transform: uppercase;
-      font-size: 14px;
+    .challenge-dates strong {
       font-weight: 900;
-      letter-spacing: 0.13em;
     }
 
-    .deadline-date {
-      margin-bottom: 20px;
-      font-size: 35px;
-      line-height: 1.05;
-      font-weight: 1000;
+    .challenge-dates sup {
+      position: relative;
+      top: -0.2em;
+      font-size: 0.55em;
     }
 
-    .deadline-divider {
-      height: 1px;
-      margin: 20px 0;
-      background: rgba(255, 255, 255, 0.15);
+    .challenge-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 680px;
+      column-gap: 42px;
+      row-gap: 10px;
+      color: white;
+      font-size: clamp(20px, 2.4vw, 30px);
+      line-height: 1.25;
     }
 
-    .deadline-item {
+    .challenge-point {
       display: flex;
       align-items: flex-start;
-      gap: 11px;
-      margin: 14px 0;
-      color: rgba(255, 255, 255, 0.88);
-      text-align: left;
-      font-size: 15px;
-      line-height: 1.4;
+      gap: 9px;
     }
 
-    .deadline-check {
+    .challenge-point::before {
+      content: "•";
       flex: 0 0 auto;
-      display: inline-flex;
+    }
+
+    .challenge-trophy-wrap {
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 23px;
-      height: 23px;
-      border-radius: 50%;
-      color: white;
-      background: var(--blue);
-      font-size: 13px;
-      font-weight: 900;
     }
 
-    .challenge-benefits {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 22px 48px;
-    }
-
-    .challenge-benefit {
-      padding: 20px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.055);
-    }
-
-    .challenge-benefit-number {
-      margin-bottom: 6px;
-      color: var(--gold);
-      font-size: 28px;
-      font-weight: 1000;
-    }
-
-    .challenge-benefit-title {
-      margin-bottom: 5px;
-      font-weight: 900;
-    }
-
-    .challenge-benefit-text {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
+    .challenge-trophy {
+      width: min(100%, 420px);
+      max-height: 475px;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 17px 24px rgba(0, 0, 0, 0.46));
     }
 
     /*
@@ -401,10 +275,8 @@
       padding: 31px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 24px;
-      background: var(--navy-card);
-      box-shadow:
-        0 30px 80px
-        rgba(0, 0, 0, 0.55);
+      background: #0b1627;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.58);
     }
 
     .modal-close {
@@ -416,11 +288,12 @@
       justify-content: center;
       width: 38px;
       height: 38px;
+      padding: 0;
       border: 1px solid rgba(255, 255, 255, 0.11);
       border-radius: 50%;
       color: white;
       background: rgba(255, 255, 255, 0.06);
-      font-size: 20px;
+      font-size: 21px;
     }
 
     .registration-modal h2 {
@@ -467,10 +340,8 @@
     }
 
     .field input:focus {
-      border-color: var(--blue-light);
-      box-shadow:
-        0 0 0 3px
-        rgba(63, 111, 196, 0.18);
+      border-color: #78a9df;
+      box-shadow: 0 0 0 3px rgba(63, 111, 196, 0.18);
     }
 
     .submit-registration {
@@ -498,19 +369,10 @@
 
     .form-message.error {
       display: block;
-      border:
-        1px solid
-        rgba(248, 113, 113, 0.35);
+      border: 1px solid rgba(248, 113, 113, 0.35);
       color: #fecaca;
-      background:
-        rgba(248, 113, 113, 0.11);
+      background: rgba(248, 113, 113, 0.11);
     }
-
-    /*
-    =========================================================
-    SUCCESS VIEW
-    =========================================================
-    */
 
     .registration-success {
       display: none;
@@ -525,13 +387,10 @@
       width: 64px;
       height: 64px;
       margin: 0 auto 18px;
-      border:
-        1px solid
-        rgba(34, 197, 94, 0.4);
+      border: 1px solid rgba(34, 197, 94, 0.4);
       border-radius: 50%;
       color: #86efac;
-      background:
-        rgba(34, 197, 94, 0.14);
+      background: rgba(34, 197, 94, 0.14);
       font-size: 32px;
       font-weight: 900;
     }
@@ -566,7 +425,7 @@
 
     /*
     =========================================================
-    ORIGINAL HOCKEYNATIVE WEBSITE
+    REGULAR HOCKEYNATIVE WEBSITE
     =========================================================
     */
 
@@ -614,9 +473,7 @@
       border: 1px solid var(--border);
       border-radius: 28px;
       background: rgba(11, 18, 32, 0.88);
-      box-shadow:
-        0 0 40px
-        rgba(0, 0, 0, 0.38);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.38);
     }
 
     .hero-card {
@@ -692,16 +549,9 @@
       max-width: 300px;
       min-height: 470px;
       padding: 26px 20px;
-      border:
-        1px solid
-        rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 34px;
-      background:
-        linear-gradient(
-          180deg,
-          #0a1f36,
-          #030712
-        );
+      background: linear-gradient(180deg, #0a1f36, #030712);
     }
 
     .mock-phone img {
@@ -719,9 +569,7 @@
     .mock-input {
       margin-bottom: 10px;
       padding: 13px;
-      border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
       color: rgba(255, 255, 255, 0.7);
       background: var(--input);
@@ -783,9 +631,7 @@
       border: 1px solid var(--border);
       border-radius: 28px;
       background: rgba(11, 18, 32, 0.92);
-      box-shadow:
-        0 0 40px
-        rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
       text-align: center;
     }
 
@@ -802,9 +648,7 @@
       flex-wrap: wrap;
       margin-top: 50px;
       padding-top: 24px;
-      border-top:
-        1px solid
-        rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       color: rgba(255, 255, 255, 0.55);
       font-size: 14px;
     }
@@ -816,21 +660,40 @@
 
     /*
     =========================================================
-    RESPONSIVE
+    TABLET AND MOBILE
     =========================================================
     */
 
     @media (max-width: 900px) {
-      .challenge-grid {
+      .challenge-hero {
+        min-height: 0;
+        background-position: 62% center;
+      }
+
+      .challenge-container {
+        min-height: 0;
+        padding: 24px 22px 42px;
+      }
+
+      .challenge-layout {
+        position: relative;
         grid-template-columns: 1fr;
       }
 
-      .deadline-card {
-        max-width: 580px;
+      .challenge-copy {
+        max-width: 680px;
       }
 
-      .challenge-benefits {
-        grid-template-columns: repeat(2, 1fr);
+      .challenge-trophy-wrap {
+        position: absolute;
+        right: -50px;
+        bottom: 0;
+        z-index: -1;
+        opacity: 0.27;
+      }
+
+      .challenge-trophy {
+        width: 360px;
       }
 
       .hero {
@@ -838,46 +701,30 @@
       }
     }
 
-    @media (max-width: 620px) {
-      .challenge-topbar {
-        font-size: 11px;
-        line-height: 1.45;
-      }
-
-      .challenge-container {
-        padding-top: 30px;
-      }
-
+    @media (max-width: 700px) {
       .challenge-logo {
-        width: 225px;
-        margin-bottom: 28px;
+        width: 235px;
+        max-width: 75%;
       }
 
-      .challenge-title {
-        font-size: 48px;
+      .challenge-copy h1 {
+        font-size: 44px;
+      }
+
+      .challenge-cta {
+        max-width: 100%;
+        min-height: 70px;
+        font-size: 24px;
       }
 
       .challenge-dates {
-        font-size: 14px;
+        font-size: 18px;
       }
 
-      .free-banner {
-        width: 100%;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .challenge-register-button {
-        width: 100%;
-      }
-
-      .challenge-benefits {
+      .challenge-points {
         grid-template-columns: 1fr;
-      }
-
-      .registration-modal {
-        padding: 27px 20px 22px;
+        gap: 8px;
+        font-size: 21px;
       }
 
       .name-row {
@@ -900,25 +747,40 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 480px) {
+      .challenge-container {
+        padding-right: 18px;
+        padding-left: 18px;
+      }
+
+      .challenge-copy h1 {
+        font-size: 38px;
+      }
+
+      .challenge-cta {
+        font-size: 21px;
+      }
+
+      .challenge-trophy-wrap {
+        right: -95px;
+        opacity: 0.2;
+      }
+
+      .registration-modal {
+        padding: 27px 20px 22px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!--
-  =========================================================
-  FALL STICKHANDLING CHALLENGE
-  =========================================================
-  -->
+  <!-- =====================================================
+       STICKHANDLING CHALLENGE HERO
+       ===================================================== -->
 
-  <section
-    class="challenge-section"
-    id="challenge"
-  >
-
-    <div class="challenge-topbar">
-      Registration is now open for the 2026 Fall Stickhandling Challenge
-    </div>
+  <section class="challenge-hero" id="challenge">
 
     <div class="challenge-container">
 
@@ -928,178 +790,60 @@
         alt="HockeyNative"
       />
 
-      <div class="challenge-grid">
+      <div class="challenge-layout">
 
-        <div>
+        <div class="challenge-copy">
 
-          <div class="challenge-eyebrow">
-            Open to hockey teams, groups and organizations
-          </div>
-
-          <h1 class="challenge-title">
-            Fall Stickhandling
-            <span>Challenge</span>
+          <h1>
+            Register Now for the Group
+            <span>Stickhandling Challenge</span>
           </h1>
 
-          <div class="challenge-dates">
-            August 15 – September 15, 2026
-          </div>
-
-          <p class="challenge-lead">
-            Give your players a competitive reason to practice at home.
-            Players complete HockeyNative drills, compete on a live
-            leaderboard and earn player awards.
-          </p>
-
-          <div class="free-banner">
-
-            <div class="free-word">
-              FREE
-            </div>
-
-            <div class="free-description">
-              FREE TO ENTER<br />
-              PLAYER AWARDS GIVEN
-            </div>
-
-          </div>
-
           <button
-            class="challenge-register-button"
+            class="challenge-cta"
             id="openRegistrationButton"
             type="button"
           >
-            <span>
-              Register Your Group, Team or Organization
-              <strong>Register Free</strong>
-            </span>
+            Click to Register, It’s Free!
           </button>
 
-          <div class="registration-caption">
-            Receive a unique Team Code and player invitation link by email.
+          <p class="challenge-dates">
+            Competition
+            <strong>STARTS August 15<sup>th</sup></strong>
+            and
+            <strong>ENDS September 15<sup>th</sup></strong>
+          </p>
+
+          <div class="challenge-points">
+
+            <div class="challenge-point">
+              Free to Enter
+            </div>
+
+            <div class="challenge-point">
+              Live Leaderboard
+            </div>
+
+            <div class="challenge-point">
+              Player Awards Given
+            </div>
+
+            <div class="challenge-point">
+              Free App Access
+            </div>
+
           </div>
 
         </div>
 
-        <aside class="deadline-card">
+        <div class="challenge-trophy-wrap">
 
-          <div class="deadline-label">
-            Registration Deadline
-          </div>
+          <img
+            class="challenge-trophy"
+            src="trophy.png"
+            alt="HockeyNative challenge trophy"
+          />
 
-          <div class="deadline-date">
-            August 15, 2026
-          </div>
-
-          <div class="deadline-divider"></div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-
-            <span>
-              Free registration for teams and players
-            </span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-
-            <span>
-              Unique four-character Team Code
-            </span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-
-            <span>
-              Free player access during the challenge
-            </span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-
-            <span>
-              Live leaderboard and player awards
-            </span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-
-            <span>
-              Unlimited attempts through September 15
-            </span>
-          </div>
-
-        </aside>
-
-      </div>
-    </div>
-
-    <div class="challenge-benefits">
-
-      <div class="challenge-benefit">
-
-        <div class="challenge-benefit-number">
-          01
-        </div>
-
-        <div class="challenge-benefit-title">
-          Register
-        </div>
-
-        <div class="challenge-benefit-text">
-          Enter your organization and organizer information.
-        </div>
-
-      </div>
-
-      <div class="challenge-benefit">
-
-        <div class="challenge-benefit-number">
-          02
-        </div>
-
-        <div class="challenge-benefit-title">
-          Receive Your Code
-        </div>
-
-        <div class="challenge-benefit-text">
-          Your unique Team Code is delivered by email.
-        </div>
-
-      </div>
-
-      <div class="challenge-benefit">
-
-        <div class="challenge-benefit-number">
-          03
-        </div>
-
-        <div class="challenge-benefit-title">
-          Invite Players
-        </div>
-
-        <div class="challenge-benefit-text">
-          Forward the included link and code to your players.
-        </div>
-
-      </div>
-
-      <div class="challenge-benefit">
-
-        <div class="challenge-benefit-number">
-          04
-        </div>
-
-        <div class="challenge-benefit-title">
-          Start Competing
-        </div>
-
-        <div class="challenge-benefit-text">
-          Player attempts automatically appear on the leaderboard.
         </div>
 
       </div>
@@ -1108,11 +852,9 @@
 
   </section>
 
-  <!--
-  =========================================================
-  REGISTRATION MODAL
-  =========================================================
-  -->
+  <!-- =====================================================
+       REGISTRATION MODAL
+       ===================================================== -->
 
   <div
     class="modal-overlay"
@@ -1141,7 +883,8 @@
 
         <p class="modal-intro">
           Register your group, team or organization. We will email you a
-          unique Team Code and a link to forward to all participating players.
+          unique four-character code and a link to forward to all
+          participating players.
         </p>
 
         <form
@@ -1282,9 +1025,9 @@
         </p>
 
         <p>
-          The email contains your unique Team Code and a link to forward
-          to all participating players for free app access and entry into
-          the challenge.
+          The email contains your unique challenge code and a link to
+          forward to all participating players for free app access and
+          entry into the competition.
         </p>
 
         <button
@@ -1301,11 +1044,9 @@
 
   </div>
 
-  <!--
-  =========================================================
-  ORIGINAL HOCKEYNATIVE WEBSITE
-  =========================================================
-  -->
+  <!-- =====================================================
+       EXISTING HOCKEYNATIVE WEBSITE
+       ===================================================== -->
 
   <main class="page">
 
@@ -1317,10 +1058,23 @@
       />
 
       <div class="nav-links">
-        <a href="#challenge">Fall Challenge</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="/privacy">Privacy</a>
+
+        <a href="#challenge">
+          Challenge
+        </a>
+
+        <a href="#features">
+          Features
+        </a>
+
+        <a href="#pricing">
+          Pricing
+        </a>
+
+        <a href="/privacy">
+          Privacy
+        </a>
+
       </div>
 
     </nav>
@@ -1396,8 +1150,8 @@
           <div
             class="mock-button"
             style="
-              background: #111827;
               color: white;
+              background: #111827;
               border: 1px solid rgba(255,255,255,0.10);
             "
           >
@@ -1530,23 +1284,32 @@
   <script>
     /*
     =========================================================
-    SUPABASE CONFIGURATION
+    BACKEND CONFIGURATION
     =========================================================
 
-    Do not put your service-role key in this file.
+    This page expects a Supabase Edge Function named:
 
-    Replace SUPABASE_ANON_KEY with your public anon key.
+    register-challenge-team
+
+    Do not put your Resend API key or Supabase service-role
+    key inside this HTML file.
     */
 
     const REGISTRATION_FUNCTION_URL =
       "https://fyncbcraeayyrrvfhgdj.supabase.co/functions/v1/register-challenge-team";
 
+    /*
+      Replace this with your public Supabase anon key.
+
+      The anon key is safe to use in your website.
+      Never use the service-role key here.
+    */
     const SUPABASE_ANON_KEY =
       "PASTE_YOUR_PUBLIC_SUPABASE_ANON_KEY_HERE";
 
     /*
     =========================================================
-    ELEMENT REFERENCES
+    ELEMENTS
     =========================================================
     */
 
@@ -1582,7 +1345,7 @@
 
     /*
     =========================================================
-    MODAL FUNCTIONS
+    MODAL
     =========================================================
     */
 
@@ -1623,12 +1386,6 @@
       submitButton.textContent =
         "Submit Free Registration";
     }
-
-    /*
-    =========================================================
-    EVENT LISTENERS
-    =========================================================
-    */
 
     openButton.addEventListener(
       "click",
@@ -1733,6 +1490,19 @@
 
           errorBox.textContent =
             "Please complete every field.";
+
+          return;
+        }
+
+        if (
+          SUPABASE_ANON_KEY ===
+          "PASTE_YOUR_PUBLIC_SUPABASE_ANON_KEY_HERE"
+        ) {
+          errorBox.className =
+            "form-message error";
+
+          errorBox.textContent =
+            "The registration system has not been connected yet.";
 
           return;
         }
