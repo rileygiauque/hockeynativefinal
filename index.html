@@ -4,21 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>HockeyNative | Fall Stickhandling Challenge</title>
+  <title>HockeyNative</title>
 
   <style>
     :root {
-      --navy: #081d33;
-      --navy-light: #0d2947;
+      --brand: #0a1f36;
       --blue: #3f6fc4;
-      --blue-light: #77a8e0;
+      --blue-light: #8bb8ec;
       --gold: #f5c542;
-      --card: #0b1627;
+      --card: #0b1220;
       --input: #111827;
       --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.74);
+      --muted: rgba(255, 255, 255, 0.72);
+      --soft: rgba(255, 255, 255, 0.1);
       --border: rgba(255, 255, 255, 0.14);
-      --soft: rgba(255, 255, 255, 0.08);
+      --button: #e2e8f0;
+      --success: #22c55e;
+      --error: #f87171;
     }
 
     * {
@@ -35,17 +37,20 @@
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
-        Arial,
         sans-serif;
       background:
         radial-gradient(
           circle at top,
-          rgba(63, 111, 196, 0.19),
-          transparent 34%
+          rgba(37, 99, 235, 0.18),
+          transparent 35%
         ),
-        linear-gradient(180deg, var(--navy) 0%, #030712 100%);
+        linear-gradient(180deg, #0a1f36 0%, #030712 100%);
       color: var(--text);
       min-height: 100vh;
+    }
+
+    body.modal-open {
+      overflow: hidden;
     }
 
     a {
@@ -53,283 +58,303 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     /*
-    ===========================================
-    FALL CHALLENGE SECTION
-    ===========================================
+    ==================================================
+    SIMPLE CHALLENGE BANNER
+    ==================================================
     */
 
-    .challenge-section {
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    .challenge {
       background:
         radial-gradient(
-          circle at 80% 30%,
-          rgba(63, 111, 196, 0.35),
-          transparent 32%
+          circle at 80% 20%,
+          rgba(68, 123, 202, 0.3),
+          transparent 35%
         ),
-        linear-gradient(135deg, #071a2d 0%, #0b2b4d 100%);
+        linear-gradient(135deg, #071a2e, #0b2a49);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
     }
 
-    .challenge-section::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -130px;
-      bottom: -210px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .challenge-topbar {
-      background: var(--blue);
-      color: white;
-      text-align: center;
-      padding: 12px 20px;
-      font-size: 15px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .challenge-container {
+    .challenge-inner {
       width: 100%;
-      max-width: 1180px;
+      max-width: 1120px;
+      min-height: 440px;
       margin: 0 auto;
-      padding: 44px 22px 52px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .challenge-logo {
-      width: 290px;
-      display: block;
-      margin-bottom: 34px;
-    }
-
-    .challenge-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-      gap: 42px;
+      padding: 54px 20px;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    .challenge-eyebrow {
-      color: #9ec7f4;
+    .challenge-content {
+      max-width: 850px;
+    }
+
+    .challenge-label {
+      color: var(--blue-light);
+      margin-bottom: 15px;
       font-size: 14px;
       font-weight: 900;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 14px;
     }
 
-    .challenge-title {
-      font-size: clamp(48px, 7.5vw, 88px);
-      line-height: 0.93;
-      margin: 0 0 18px;
-      letter-spacing: -0.055em;
+    .challenge h1 {
+      margin: 0 0 14px;
+      font-size: clamp(43px, 7vw, 78px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
       text-transform: uppercase;
     }
 
-    .challenge-title span {
-      display: block;
-      color: #77a8e0;
-    }
-
-    .challenge-dates {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 16px;
-      margin-bottom: 22px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
+    .challenge-date {
+      margin-bottom: 18px;
       color: white;
-      font-weight: 800;
-      font-size: 16px;
+      font-size: clamp(19px, 3vw, 27px);
+      font-weight: 700;
     }
 
-    .challenge-lead {
+    .challenge-copy {
+      max-width: 720px;
+      margin: 0 auto 26px;
       color: var(--muted);
-      font-size: 19px;
+      font-size: 18px;
       line-height: 1.55;
-      max-width: 700px;
-      margin: 0 0 26px;
     }
 
-    .free-banner {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      width: fit-content;
-      max-width: 100%;
-      padding: 17px 22px;
+    .challenge-free {
+      display: inline-block;
       margin-bottom: 26px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #f5c542, #ffd96b);
-      color: #071a2d;
-      box-shadow: 0 12px 32px rgba(245, 197, 66, 0.18);
-    }
-
-    .free-word {
-      font-size: 34px;
-      line-height: 1;
-      font-weight: 1000;
-      letter-spacing: -0.04em;
-    }
-
-    .free-description {
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: rgba(245, 197, 66, 0.12);
+      border: 1px solid rgba(245, 197, 66, 0.52);
+      color: #ffe28a;
       font-size: 15px;
-      line-height: 1.3;
-      font-weight: 850;
+      font-weight: 900;
     }
 
-    .challenge-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .challenge-button {
+    .challenge-register-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 54px;
-      padding: 0 24px;
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 900;
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease;
-    }
-
-    .challenge-button:hover {
-      transform: translateY(-2px);
-    }
-
-    .challenge-button-primary {
+      min-height: 58px;
+      max-width: 100%;
+      padding: 0 27px;
+      border: 0;
+      border-radius: 15px;
       background: white;
-      color: #061526;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
-    }
-
-    .challenge-button-secondary {
-      background: rgba(255, 255, 255, 0.08);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .deadline-card {
-      background: rgba(5, 18, 33, 0.84);
-      border: 2px solid var(--gold);
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.33);
-      text-align: center;
-    }
-
-    .deadline-label {
-      color: var(--gold);
-      font-size: 14px;
+      color: #071a2e;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+      font-size: 17px;
       font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
     }
 
-    .deadline-date {
-      font-size: 35px;
-      line-height: 1.05;
-      font-weight: 1000;
-      margin-bottom: 20px;
+    .challenge-register-button:hover {
+      transform: translateY(-1px);
     }
 
-    .deadline-divider {
-      height: 1px;
-      margin: 20px 0;
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .deadline-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
-      margin: 14px 0;
-      text-align: left;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 15px;
-      line-height: 1.4;
-    }
-
-    .deadline-check {
-      flex: 0 0 auto;
-      width: 23px;
-      height: 23px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: var(--blue);
-      color: white;
+    .challenge-deadline {
+      margin-top: 15px;
+      color: rgba(255, 255, 255, 0.62);
       font-size: 13px;
-      font-weight: 900;
-    }
-
-    .deadline-note {
-      margin-top: 22px;
-      color: rgba(255, 255, 255, 0.58);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .challenge-benefits {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 22px 48px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .challenge-benefit {
-      padding: 20px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.13);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.055);
-    }
-
-    .challenge-benefit-number {
-      color: var(--gold);
-      font-size: 28px;
-      font-weight: 1000;
-      margin-bottom: 6px;
-    }
-
-    .challenge-benefit-title {
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-
-    .challenge-benefit-text {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
     }
 
     /*
-    ===========================================
-    MAIN WEBSITE
-    ===========================================
+    ==================================================
+    REGISTRATION MODAL
+    ==================================================
+    */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(9px);
+    }
+
+    .modal-overlay.visible {
+      display: flex;
+    }
+
+    .registration-modal {
+      position: relative;
+      width: 100%;
+      max-width: 550px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      padding: 31px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      background: #0b1627;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
+      font-size: 20px;
+    }
+
+    .registration-modal h2 {
+      margin: 0 42px 7px 0;
+      font-size: 29px;
+      letter-spacing: -0.03em;
+    }
+
+    .modal-intro {
+      margin: 0 0 23px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .registration-form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .field input {
+      width: 100%;
+      min-height: 49px;
+      padding: 0 14px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 12px;
+      outline: none;
+      background: var(--input);
+      color: white;
+    }
+
+    .field input:focus {
+      border-color: #78a9df;
+      box-shadow: 0 0 0 3px rgba(63, 111, 196, 0.18);
+    }
+
+    .submit-registration {
+      min-height: 52px;
+      margin-top: 4px;
+      border: 0;
+      border-radius: 13px;
+      background: white;
+      color: #071a2e;
+      font-weight: 900;
+    }
+
+    .submit-registration:disabled {
+      cursor: not-allowed;
+      opacity: 0.58;
+    }
+
+    .form-message {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 11px;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .form-message.error {
+      display: block;
+      border: 1px solid rgba(248, 113, 113, 0.35);
+      background: rgba(248, 113, 113, 0.11);
+      color: #fecaca;
+    }
+
+    /*
+    ==================================================
+    SUCCESS STATE
+    ==================================================
+    */
+
+    .registration-success {
+      display: none;
+      padding: 12px 0 4px;
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #86efac;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .registration-success h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    .registration-success p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .success-email {
+      color: white;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .success-close {
+      width: 100%;
+      min-height: 51px;
+      margin-top: 12px;
+      border: 0;
+      border-radius: 13px;
+      background: white;
+      color: #071a2e;
+      font-weight: 900;
+    }
+
+    /*
+    ==================================================
+    ORIGINAL WEBSITE
+    ==================================================
     */
 
     .page {
@@ -343,7 +368,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 64px;
+      margin-bottom: 70px;
     }
 
     .nav img {
@@ -353,14 +378,10 @@
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       color: var(--muted);
       font-size: 14px;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: white;
+      font-weight: 600;
     }
 
     .hero {
@@ -385,26 +406,26 @@
 
     .eyebrow {
       color: #93c5fd;
+      margin-bottom: 14px;
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 14px;
     }
 
-    h1 {
+    .app-title {
+      margin: 0 0 18px;
       font-size: clamp(42px, 7vw, 76px);
       line-height: 0.95;
-      margin: 0 0 18px;
       letter-spacing: -0.05em;
     }
 
     .lead {
+      max-width: 620px;
+      margin-bottom: 28px;
       color: var(--muted);
       font-size: 19px;
       line-height: 1.55;
-      max-width: 620px;
-      margin-bottom: 28px;
     }
 
     .buttons {
@@ -420,12 +441,12 @@
       min-height: 48px;
       padding: 0 20px;
       border-radius: 14px;
-      font-weight: 800;
       font-size: 15px;
+      font-weight: 800;
     }
 
     .btn-primary {
-      background: #e2e8f0;
+      background: var(--button);
       color: #000;
     }
 
@@ -436,8 +457,8 @@
     }
 
     .phone-card {
-      padding: 24px;
       min-height: 520px;
+      padding: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -448,13 +469,13 @@
       width: 100%;
       max-width: 300px;
       min-height: 470px;
-      border-radius: 34px;
-      background: linear-gradient(180deg, var(--navy), #030712);
-      border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 26px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 34px;
+      background: linear-gradient(180deg, #0a1f36, #030712);
     }
 
     .mock-phone img {
@@ -463,30 +484,30 @@
     }
 
     .mock-title {
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 16px;
       font-weight: 700;
     }
 
     .mock-input {
-      background: var(--input);
+      margin-bottom: 10px;
+      padding: 13px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-      padding: 13px;
+      background: var(--input);
       color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 10px;
       text-align: left;
       font-size: 14px;
     }
 
     .mock-button {
+      margin-top: 8px;
+      padding: 14px;
+      border-radius: 14px;
       background: #e2e8f0;
       color: #000;
-      border-radius: 14px;
-      padding: 14px;
       font-weight: 800;
-      margin-top: 8px;
     }
 
     .section {
@@ -494,9 +515,9 @@
     }
 
     .section h2 {
+      margin-bottom: 18px;
       font-size: 34px;
       letter-spacing: -0.03em;
-      margin-bottom: 18px;
       text-align: center;
     }
 
@@ -516,8 +537,8 @@
     }
 
     .feature-card p {
-      color: var(--muted);
       margin: 0;
+      color: var(--muted);
       line-height: 1.5;
     }
 
@@ -528,101 +549,46 @@
     }
 
     .pricing-card {
-      max-width: 520px;
       width: 100%;
-      text-align: center;
+      max-width: 520px;
       padding: 32px;
-      background: rgba(11, 18, 32, 0.92);
       border: 1px solid var(--border);
       border-radius: 28px;
+      background: rgba(11, 18, 32, 0.92);
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+      text-align: center;
     }
 
     .price {
+      margin: 10px 0;
       font-size: 44px;
       font-weight: 900;
-      margin: 10px 0;
     }
 
     .footer {
       margin-top: 50px;
       padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       color: rgba(255, 255, 255, 0.55);
       font-size: 14px;
     }
 
     .footer a {
-      color: rgba(255, 255, 255, 0.75);
       margin-left: 14px;
+      color: rgba(255, 255, 255, 0.75);
     }
 
-    /*
-    ===========================================
-    MOBILE
-    ===========================================
-    */
-
-    @media (max-width: 900px) {
-      .challenge-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 820px) {
+      .challenge-inner {
+        min-height: 0;
+        padding: 45px 20px;
       }
 
-      .deadline-card {
-        max-width: 560px;
-      }
-
-      .challenge-benefits {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .challenge-topbar {
-        font-size: 12px;
-      }
-
-      .challenge-container {
-        padding-top: 30px;
-      }
-
-      .challenge-logo {
-        width: 230px;
-        margin-bottom: 28px;
-      }
-
-      .challenge-title {
-        font-size: 49px;
-      }
-
-      .challenge-dates {
-        font-size: 14px;
-      }
-
-      .free-banner {
-        width: 100%;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .challenge-buttons {
-        flex-direction: column;
-      }
-
-      .challenge-button {
-        width: 100%;
-      }
-
-      .challenge-benefits {
+      .name-row {
         grid-template-columns: 1fr;
       }
 
@@ -634,6 +600,10 @@
         display: none;
       }
 
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
       .hero-card {
         padding: 28px;
       }
@@ -642,185 +612,255 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 520px) {
+      .challenge h1 {
+        font-size: 42px;
+      }
+
+      .challenge-register-button {
+        width: 100%;
+        padding: 10px 16px;
+      }
+
+      .registration-modal {
+        padding: 27px 20px 22px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!--
-  =========================================================
-  FALL STICKHANDLING CHALLENGE
-  This appears before the regular website.
-  =========================================================
-  -->
+  <!-- Challenge heading at the very top -->
+  <section class="challenge">
+    <div class="challenge-inner">
+      <div class="challenge-content">
 
-  <section class="challenge-section" id="challenge">
-
-    <div class="challenge-topbar">
-      Applications are now open for the 2026 Fall Stickhandling Challenge
-    </div>
-
-    <div class="challenge-container">
-
-      <img
-        class="challenge-logo"
-        src="logo2.png"
-        alt="HockeyNative"
-      />
-
-      <div class="challenge-grid">
-
-        <div>
-          <div class="challenge-eyebrow">
-            Open to youth hockey teams and organizations
-          </div>
-
-          <h1 class="challenge-title">
-            Fall Stickhandling
-            <span>Challenge</span>
-          </h1>
-
-          <div class="challenge-dates">
-            August 15 – September 15, 2026
-          </div>
-
-          <p class="challenge-lead">
-            Give your players a competitive reason to practice at home.
-            Players complete HockeyNative drills, submit timed attempts,
-            compete on a live leaderboard, and earn player awards.
-          </p>
-
-          <div class="free-banner">
-            <div class="free-word">FREE</div>
-
-            <div class="free-description">
-              FREE FOR ACCEPTED TEAMS<br />
-              3 MONTHS OF HOCKEYNATIVE PRO INCLUDED
-            </div>
-          </div>
-
-          <div class="challenge-buttons">
-
-            <!-- Replace this URL with your application or registration page -->
-            <a
-              class="challenge-button challenge-button-primary"
-              href="/challenge-application"
-            >
-              Apply Your Team
-            </a>
-
-            <a
-              class="challenge-button challenge-button-secondary"
-              href="#challenge-details"
-            >
-              See How It Works
-            </a>
-
-          </div>
+        <div class="challenge-label">
+          HockeyNative Presents
         </div>
 
-        <aside class="deadline-card">
+        <h1>
+          2026 Fall Stickhandling Challenge
+        </h1>
 
-          <div class="deadline-label">
-            Application Deadline
-          </div>
-
-          <div class="deadline-date">
-            August 15, 2026
-          </div>
-
-          <div class="deadline-divider"></div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-            <span>No entry fee for accepted teams or players.</span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-            <span>Every participating player receives a unique free-access link.</span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-            <span>Three months of HockeyNative Pro access included.</span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-            <span>Live leaderboard, submitted videos, and player awards.</span>
-          </div>
-
-          <div class="deadline-item">
-            <span class="deadline-check">✓</span>
-            <span>Getting started takes less than two minutes.</span>
-          </div>
-
-          <div class="deadline-note">
-            Promotional Pro access lasts for three months. After the promotional
-            period, access converts to the standard paid subscription unless
-            canceled before renewal. Final billing terms will be shown before
-            activation.
-          </div>
-
-        </aside>
-      </div>
-    </div>
-
-    <div class="challenge-benefits" id="challenge-details">
-
-      <div class="challenge-benefit">
-        <div class="challenge-benefit-number">01</div>
-        <div class="challenge-benefit-title">Register Your Team</div>
-        <div class="challenge-benefit-text">
-          A coach or team representative applies and receives a unique team code.
+        <div class="challenge-date">
+          August 15 – September 15, 2026
         </div>
-      </div>
 
-      <div class="challenge-benefit">
-        <div class="challenge-benefit-number">02</div>
-        <div class="challenge-benefit-title">Invite Your Players</div>
-        <div class="challenge-benefit-text">
-          Forward the provided registration link and team code to every player.
+        <p class="challenge-copy">
+          Register your group, team or organization for a free month-long
+          stickhandling competition featuring a live leaderboard, submitted
+          videos and player awards.
+        </p>
+
+        <div class="challenge-free">
+          FREE TO ENTER · PLAYER AWARDS GIVEN
         </div>
-      </div>
 
-      <div class="challenge-benefit">
-        <div class="challenge-benefit-number">03</div>
-        <div class="challenge-benefit-title">Complete the Drills</div>
-        <div class="challenge-benefit-text">
-          Players receive unlimited attempts during the challenge period.
+        <br />
+
+        <button
+          class="challenge-register-button"
+          id="openRegistrationButton"
+          type="button"
+        >
+          Register Your Group, Team or Organization Now — Register Free!
+        </button>
+
+        <div class="challenge-deadline">
+          Registration closes August 15, 2026
         </div>
-      </div>
 
-      <div class="challenge-benefit">
-        <div class="challenge-benefit-number">04</div>
-        <div class="challenge-benefit-title">Compete for Awards</div>
-        <div class="challenge-benefit-text">
-          The fastest players earn trophies and drill champion certificates.
-        </div>
       </div>
-
     </div>
   </section>
 
-  <!--
-  =========================================================
-  REGULAR HOCKEYNATIVE WEBSITE
-  =========================================================
-  -->
+  <!-- Registration modal -->
+  <div
+    class="modal-overlay"
+    id="registrationOverlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="registrationTitle"
+  >
+    <div class="registration-modal">
 
+      <button
+        class="modal-close"
+        id="closeRegistrationButton"
+        type="button"
+        aria-label="Close registration form"
+      >
+        ×
+      </button>
+
+      <div id="registrationFormView">
+
+        <h2 id="registrationTitle">
+          Register Free
+        </h2>
+
+        <p class="modal-intro">
+          Register your group, team or organization. We will email you a unique
+          Team Code and a link to forward to all participating players.
+        </p>
+
+        <form class="registration-form" id="challengeRegistrationForm">
+
+          <div class="field">
+            <label for="organizationName">
+              Group, team or organization name
+            </label>
+
+            <input
+              id="organizationName"
+              name="organizationName"
+              type="text"
+              maxlength="100"
+              autocomplete="organization"
+              required
+            />
+          </div>
+
+          <div class="name-row">
+
+            <div class="field">
+              <label for="firstName">
+                Organizer first name
+              </label>
+
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                maxlength="50"
+                autocomplete="given-name"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label for="lastName">
+                Organizer last name
+              </label>
+
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                maxlength="50"
+                autocomplete="family-name"
+                required
+              />
+            </div>
+
+          </div>
+
+          <div class="field">
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              maxlength="150"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="phone">
+              Phone number
+            </label>
+
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              maxlength="30"
+              autocomplete="tel"
+              required
+            />
+          </div>
+
+          <div
+            class="form-message"
+            id="registrationError"
+            role="alert"
+          ></div>
+
+          <button
+            class="submit-registration"
+            id="submitRegistrationButton"
+            type="submit"
+          >
+            Submit Free Registration
+          </button>
+
+        </form>
+      </div>
+
+      <div
+        class="registration-success"
+        id="registrationSuccessView"
+      >
+        <div class="success-icon">✓</div>
+
+        <h2>
+          Registration Complete!
+        </h2>
+
+        <p>
+          An email was just sent to
+          <span
+            class="success-email"
+            id="submittedEmail"
+          ></span>.
+        </p>
+
+        <p>
+          Check your spam folder just in case.
+        </p>
+
+        <p>
+          The email contains your unique Team Code and a link to forward to
+          all participating players for free app access and entry into the
+          challenge.
+        </p>
+
+        <button
+          class="success-close"
+          id="successCloseButton"
+          type="button"
+        >
+          Done
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Original website begins here -->
   <main class="page">
 
     <nav class="nav">
-      <img src="logo2.png" alt="HockeyNative logo" />
+
+      <img
+        src="logo2.png"
+        alt="HockeyNative logo"
+      />
 
       <div class="nav-links">
-        <a href="#challenge">Fall Challenge</a>
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="/privacy">Privacy</a>
       </div>
+
     </nav>
 
     <section class="hero">
@@ -831,9 +871,9 @@
           HockeyNative
         </div>
 
-        <h1>
+        <h2 class="app-title">
           Elite stickhandling starts here.
-        </h1>
+        </h2>
 
         <p class="lead">
           HockeyNative helps players train, time, record, and track
@@ -855,7 +895,10 @@
             />
           </a>
 
-          <a class="btn btn-secondary" href="/privacy">
+          <a
+            class="btn btn-secondary"
+            href="/privacy"
+          >
             Privacy Policy
           </a>
 
@@ -863,10 +906,12 @@
       </div>
 
       <div class="phone-card">
-
         <div class="mock-phone">
 
-          <img src="logo2.png" alt="HockeyNative" />
+          <img
+            src="logo2.png"
+            alt="HockeyNative"
+          />
 
           <div class="mock-title">
             Sign in or create an account
@@ -899,8 +944,10 @@
       </div>
     </section>
 
-    <section class="section" id="features">
-
+    <section
+      class="section"
+      id="features"
+    >
       <h2>
         Built for serious reps.
       </h2>
@@ -937,8 +984,10 @@
       </div>
     </section>
 
-    <section class="pricing" id="pricing">
-
+    <section
+      class="pricing"
+      id="pricing"
+    >
       <div class="pricing-card">
 
         <div class="eyebrow">
@@ -988,7 +1037,248 @@
       </div>
 
     </footer>
+
   </main>
+
+  <script>
+    /*
+      Replace this URL after the Supabase Edge Function is deployed.
+    */
+    const REGISTRATION_FUNCTION_URL =
+      "https://fyncbcraeayyrrvfhgdj.supabase.co/functions/v1/register-challenge-team";
+
+    /*
+      Your public Supabase anon key goes here.
+
+      Do not place the service-role key in this file.
+    */
+    const SUPABASE_ANON_KEY = "PASTE_YOUR_PUBLIC_SUPABASE_ANON_KEY_HERE";
+
+    const overlay =
+      document.getElementById("registrationOverlay");
+
+    const openButton =
+      document.getElementById("openRegistrationButton");
+
+    const closeButton =
+      document.getElementById("closeRegistrationButton");
+
+    const successCloseButton =
+      document.getElementById("successCloseButton");
+
+    const form =
+      document.getElementById("challengeRegistrationForm");
+
+    const formView =
+      document.getElementById("registrationFormView");
+
+    const successView =
+      document.getElementById("registrationSuccessView");
+
+    const submitButton =
+      document.getElementById("submitRegistrationButton");
+
+    const errorBox =
+      document.getElementById("registrationError");
+
+    const submittedEmail =
+      document.getElementById("submittedEmail");
+
+    function openRegistrationModal() {
+      overlay.classList.add("visible");
+      document.body.classList.add("modal-open");
+
+      setTimeout(() => {
+        document
+          .getElementById("organizationName")
+          .focus();
+      }, 50);
+    }
+
+    function closeRegistrationModal() {
+      overlay.classList.remove("visible");
+      document.body.classList.remove("modal-open");
+    }
+
+    function resetRegistrationModal() {
+      form.reset();
+      formView.style.display = "block";
+      successView.style.display = "none";
+      errorBox.className = "form-message";
+      errorBox.textContent = "";
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Free Registration";
+    }
+
+    openButton.addEventListener(
+      "click",
+      openRegistrationModal
+    );
+
+    closeButton.addEventListener(
+      "click",
+      closeRegistrationModal
+    );
+
+    successCloseButton.addEventListener(
+      "click",
+      () => {
+        closeRegistrationModal();
+
+        setTimeout(
+          resetRegistrationModal,
+          250
+        );
+      }
+    );
+
+    overlay.addEventListener(
+      "click",
+      event => {
+        if (event.target === overlay) {
+          closeRegistrationModal();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      event => {
+        if (
+          event.key === "Escape" &&
+          overlay.classList.contains("visible")
+        ) {
+          closeRegistrationModal();
+        }
+      }
+    );
+
+    form.addEventListener(
+      "submit",
+      async event => {
+        event.preventDefault();
+
+        errorBox.className = "form-message";
+        errorBox.textContent = "";
+
+        const organizationName =
+          document
+            .getElementById("organizationName")
+            .value
+            .trim();
+
+        const firstName =
+          document
+            .getElementById("firstName")
+            .value
+            .trim();
+
+        const lastName =
+          document
+            .getElementById("lastName")
+            .value
+            .trim();
+
+        const email =
+          document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
+
+        const phone =
+          document
+            .getElementById("phone")
+            .value
+            .trim();
+
+        if (
+          !organizationName ||
+          !firstName ||
+          !lastName ||
+          !email ||
+          !phone
+        ) {
+          errorBox.className =
+            "form-message error";
+
+          errorBox.textContent =
+            "Please complete every field.";
+
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent =
+          "Registering...";
+
+        try {
+          const response = await fetch(
+            REGISTRATION_FUNCTION_URL,
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json",
+
+                "apikey":
+                  SUPABASE_ANON_KEY,
+
+                "Authorization":
+                  `Bearer ${SUPABASE_ANON_KEY}`
+              },
+
+              body: JSON.stringify({
+                organizationName,
+                firstName,
+                lastName,
+                email,
+                phone
+              })
+            }
+          );
+
+          const result =
+            await response.json();
+
+          if (!response.ok) {
+            throw new Error(
+              result.error ||
+              "Registration could not be completed."
+            );
+          }
+
+          submittedEmail.textContent =
+            email;
+
+          formView.style.display =
+            "none";
+
+          successView.style.display =
+            "block";
+        } catch (error) {
+          console.error(
+            "Challenge registration failed:",
+            error
+          );
+
+          errorBox.className =
+            "form-message error";
+
+          errorBox.textContent =
+            error.message ||
+            "Something went wrong. Please try again.";
+
+          submitButton.disabled =
+            false;
+
+          submitButton.textContent =
+            "Submit Free Registration";
+        }
+      }
+    );
+  </script>
 
 </body>
 </html>
