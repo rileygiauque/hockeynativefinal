@@ -88,18 +88,46 @@
       background: #0a2743;
     }
 
-    .challenge-header-inner {
-      width: 100%;
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 18px 42px;
-    }
+.challenge-header-inner {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 18px 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
 
     .challenge-header-logo {
       width: 305px;
       max-width: 58%;
       height: auto;
     }
+
+    .challenge-store-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.challenge-store-button {
+  display: block;
+  height: 48px;
+  transition: transform 0.18s ease;
+}
+
+.challenge-store-button:hover {
+  transform: translateY(-2px);
+}
+
+.challenge-store-button img {
+  display: block;
+  width: auto;
+  height: 48px;
+}
 
     /*
     =========================================================
@@ -838,15 +866,47 @@
        BLUE HEADER WITH HOCKEYNATIVE LOGO
        ===================================================== -->
 
-  <header class="challenge-header">
-    <div class="challenge-header-inner">
-      <img
-        class="challenge-header-logo"
-        src="logo2.png"
-        alt="HockeyNative"
-      />
+<header class="challenge-header">
+  <div class="challenge-header-inner">
+
+    <img
+      class="challenge-header-logo"
+      src="logo2.png"
+      alt="HockeyNative"
+    />
+
+    <div class="challenge-store-buttons">
+
+      <a
+        class="challenge-store-button"
+        href="https://apps.apple.com/gb/app/hockeynative/id6763365735"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Download HockeyNative on the App Store"
+      >
+        <img
+          src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+          alt="Download on the App Store"
+        />
+      </a>
+
+      <a
+        class="challenge-store-button"
+        href="YOUR_GOOGLE_PLAY_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Get HockeyNative on Google Play"
+      >
+        <img
+          src="google-play-badge.png"
+          alt="Get it on Google Play"
+        />
+      </a>
+
     </div>
-  </header>
+
+  </div>
+</header>
 
   <!-- =====================================================
        STICKHANDLING CHALLENGE
