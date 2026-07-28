@@ -47,7 +47,6 @@
           #0a1f36 0%,
           #030712 100%
         );
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -81,7 +80,7 @@
 
     /*
     =========================================================
-    CHALLENGE HEADER BAR
+    CHALLENGE HEADER
     =========================================================
     */
 
@@ -112,8 +111,6 @@
       position: relative;
       min-height: 500px;
       overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-
       background-image: url("challenge-background.png");
       background-position: center;
       background-repeat: no-repeat;
@@ -121,16 +118,38 @@
     }
 
     /*
-      No CSS overlay is being used.
-      The background image displays exactly as saved.
+      Fade only at the bottom edge into the regular page.
+      This is not an overlay over the whole background.
     */
 
+    .challenge-hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 110px;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 31, 54, 0),
+        #0a1f36
+      );
+    }
+
     .challenge-container {
+      position: relative;
+      z-index: 1;
       width: 100%;
       max-width: 1320px;
       min-height: 500px;
       margin: 0 auto;
-      padding: 26px 42px 34px;
+
+      /*
+        Approximately one additional inch of space
+        above and below the challenge content.
+      */
+      padding: 122px 42px 130px;
     }
 
     .challenge-layout {
@@ -154,7 +173,6 @@
       font-weight: 800;
       line-height: 1.08;
       letter-spacing: -0.035em;
-
       text-shadow:
         0 3px 12px rgba(0, 0, 0, 0.72);
     }
@@ -167,26 +185,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 100%;
       max-width: 655px;
       min-height: 84px;
       padding: 14px 25px;
-
       border: 0;
       border-radius: 15px;
-
       color: #0a2743;
       background: white;
-
       box-shadow:
         0 15px 34px rgba(0, 0, 0, 0.30);
-
       font-size: clamp(25px, 2.8vw, 38px);
       font-weight: 900;
       line-height: 1.1;
       text-align: center;
-
       transition:
         transform 0.18s ease,
         box-shadow 0.18s ease;
@@ -194,7 +206,6 @@
 
     .challenge-cta:hover {
       transform: translateY(-2px);
-
       box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.36);
     }
@@ -210,7 +221,6 @@
       color: white;
       font-size: clamp(19px, 2vw, 27px);
       line-height: 1.48;
-
       text-shadow:
         0 2px 9px rgba(0, 0, 0, 0.75);
     }
@@ -227,17 +237,14 @@
 
     .challenge-points {
       display: grid;
-      grid-template-columns: repeat(2, minmax(230px, 1fr));
-
+      grid-template-columns:
+        repeat(2, minmax(230px, 1fr));
       max-width: 730px;
-
       column-gap: 55px;
       row-gap: 11px;
-
       color: white;
       font-size: clamp(20px, 2.1vw, 29px);
       line-height: 1.28;
-
       text-shadow:
         0 2px 9px rgba(0, 0, 0, 0.76);
     }
@@ -264,7 +271,6 @@
       width: min(100%, 420px);
       max-height: 455px;
       object-fit: contain;
-
       filter:
         drop-shadow(
           0 18px 24px
@@ -282,13 +288,10 @@
       position: fixed;
       inset: 0;
       z-index: 1000;
-
       display: none;
       align-items: center;
       justify-content: center;
-
       padding: 20px;
-
       background: rgba(0, 0, 0, 0.80);
       backdrop-filter: blur(9px);
     }
@@ -299,20 +302,14 @@
 
     .registration-modal {
       position: relative;
-
       width: 100%;
       max-width: 550px;
       max-height: calc(100vh - 40px);
-
       overflow-y: auto;
-
       padding: 31px;
-
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 24px;
-
       background: #0b1627;
-
       box-shadow:
         0 30px 80px
         rgba(0, 0, 0, 0.58);
@@ -322,36 +319,28 @@
       position: absolute;
       top: 15px;
       right: 15px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 38px;
       height: 38px;
       padding: 0;
-
       border: 1px solid rgba(255, 255, 255, 0.11);
       border-radius: 50%;
-
       color: white;
       background: rgba(255, 255, 255, 0.06);
-
       font-size: 21px;
     }
 
     .registration-modal h2 {
       margin: 0 42px 7px 0;
-
       font-size: 29px;
       letter-spacing: -0.03em;
     }
 
     .modal-intro {
       margin: 0 0 23px;
-
       color: var(--muted);
-
       font-size: 15px;
       line-height: 1.5;
     }
@@ -369,11 +358,8 @@
 
     .field label {
       display: block;
-
       margin-bottom: 7px;
-
       color: rgba(255, 255, 255, 0.86);
-
       font-size: 13px;
       font-weight: 800;
     }
@@ -381,21 +367,16 @@
     .field input {
       width: 100%;
       min-height: 49px;
-
       padding: 0 14px;
-
       border: 1px solid rgba(255, 255, 255, 0.13);
       border-radius: 12px;
-
       outline: none;
-
       color: white;
       background: var(--input);
     }
 
     .field input:focus {
       border-color: #78a9df;
-
       box-shadow:
         0 0 0 3px
         rgba(63, 111, 196, 0.18);
@@ -404,13 +385,10 @@
     .submit-registration {
       min-height: 52px;
       margin-top: 4px;
-
       border: 0;
       border-radius: 13px;
-
       color: #071a2e;
       background: white;
-
       font-weight: 900;
     }
 
@@ -421,22 +399,20 @@
 
     .form-message {
       display: none;
-
       padding: 12px 14px;
-
       border-radius: 11px;
-
       font-size: 14px;
       line-height: 1.45;
     }
 
     .form-message.error {
       display: block;
-
-      border: 1px solid rgba(248, 113, 113, 0.35);
-
+      border:
+        1px solid
+        rgba(248, 113, 113, 0.35);
       color: #fecaca;
-      background: rgba(248, 113, 113, 0.11);
+      background:
+        rgba(248, 113, 113, 0.11);
     }
 
     /*
@@ -447,9 +423,7 @@
 
     .registration-success {
       display: none;
-
       padding: 12px 0 4px;
-
       text-align: center;
     }
 
@@ -457,38 +431,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 64px;
       height: 64px;
-
       margin: 0 auto 18px;
-
-      border: 1px solid rgba(34, 197, 94, 0.4);
+      border:
+        1px solid
+        rgba(34, 197, 94, 0.4);
       border-radius: 50%;
-
       color: #86efac;
-      background: rgba(34, 197, 94, 0.14);
-
+      background:
+        rgba(34, 197, 94, 0.14);
       font-size: 32px;
       font-weight: 900;
     }
 
     .registration-success h2 {
       margin: 0 0 12px;
-
       font-size: 30px;
     }
 
     .registration-success p {
       color: var(--muted);
-
       font-size: 16px;
       line-height: 1.55;
     }
 
     .success-email {
       color: white;
-
       font-weight: 800;
       overflow-wrap: anywhere;
     }
@@ -496,15 +465,11 @@
     .success-close {
       width: 100%;
       min-height: 51px;
-
       margin-top: 12px;
-
       border: 0;
       border-radius: 13px;
-
       color: #071a2e;
       background: white;
-
       font-weight: 900;
     }
 
@@ -517,36 +482,14 @@
     .page {
       width: 100%;
       max-width: 1120px;
-
       margin: 0 auto;
-      padding: 28px 20px 40px;
-    }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-bottom: 70px;
-    }
-
-    .nav img {
-      width: 190px;
-      height: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-
-      color: var(--muted);
-
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .nav-links a:hover {
-      color: white;
+      /*
+        The duplicate logo-and-tabs navigation section
+        has been removed, so this begins directly with
+        the original hero content.
+      */
+      padding: 42px 20px 40px;
     }
 
     .hero {
@@ -561,9 +504,7 @@
     .feature-card {
       border: 1px solid var(--border);
       border-radius: 28px;
-
       background: rgba(11, 18, 32, 0.88);
-
       box-shadow:
         0 0 40px
         rgba(0, 0, 0, 0.38);
@@ -575,11 +516,8 @@
 
     .eyebrow {
       margin-bottom: 14px;
-
       color: #93c5fd;
-
       text-transform: uppercase;
-
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.12em;
@@ -587,7 +525,6 @@
 
     .app-title {
       margin: 0 0 18px;
-
       font-size: clamp(42px, 7vw, 76px);
       line-height: 0.95;
       letter-spacing: -0.05em;
@@ -596,9 +533,7 @@
     .lead {
       max-width: 620px;
       margin-bottom: 28px;
-
       color: var(--muted);
-
       font-size: 19px;
       line-height: 1.55;
     }
@@ -613,12 +548,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
       min-height: 48px;
       padding: 0 20px;
-
       border-radius: 14px;
-
       font-size: 15px;
       font-weight: 800;
     }
@@ -630,7 +562,6 @@
 
     .btn-secondary {
       border: 1px solid var(--soft);
-
       color: white;
       background: var(--input);
     }
@@ -639,10 +570,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-
       min-height: 520px;
       padding: 24px;
-
       text-align: center;
     }
 
@@ -650,16 +579,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-
       width: 100%;
       max-width: 300px;
       min-height: 470px;
-
       padding: 26px 20px;
-
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
       border-radius: 34px;
-
       background:
         linear-gradient(
           180deg,
@@ -675,9 +602,7 @@
 
     .mock-title {
       margin-bottom: 18px;
-
       color: rgba(255, 255, 255, 0.9);
-
       font-size: 16px;
       font-weight: 700;
     }
@@ -685,13 +610,12 @@
     .mock-input {
       margin-bottom: 10px;
       padding: 13px;
-
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-
       color: rgba(255, 255, 255, 0.7);
       background: var(--input);
-
       text-align: left;
       font-size: 14px;
     }
@@ -699,12 +623,9 @@
     .mock-button {
       margin-top: 8px;
       padding: 14px;
-
       border-radius: 14px;
-
       color: #000;
       background: #e2e8f0;
-
       font-weight: 800;
     }
 
@@ -714,9 +635,7 @@
 
     .section h2 {
       margin-bottom: 18px;
-
       text-align: center;
-
       font-size: 34px;
       letter-spacing: -0.03em;
     }
@@ -733,46 +652,36 @@
 
     .feature-card h3 {
       margin: 0 0 10px;
-
       font-size: 20px;
     }
 
     .feature-card p {
       margin: 0;
-
       color: var(--muted);
-
       line-height: 1.5;
     }
 
     .pricing {
       display: flex;
       justify-content: center;
-
       margin-top: 38px;
     }
 
     .pricing-card {
       width: 100%;
       max-width: 520px;
-
       padding: 32px;
-
       border: 1px solid var(--border);
       border-radius: 28px;
-
       background: rgba(11, 18, 32, 0.92);
-
       box-shadow:
         0 0 40px
         rgba(0, 0, 0, 0.35);
-
       text-align: center;
     }
 
     .price {
       margin: 10px 0;
-
       font-size: 44px;
       font-weight: 900;
     }
@@ -782,20 +691,17 @@
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-
       margin-top: 50px;
       padding-top: 24px;
-
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-
+      border-top:
+        1px solid
+        rgba(255, 255, 255, 0.08);
       color: rgba(255, 255, 255, 0.55);
-
       font-size: 14px;
     }
 
     .footer a {
       margin-left: 14px;
-
       color: rgba(255, 255, 255, 0.75);
     }
 
@@ -837,9 +743,8 @@
 
       .challenge-container {
         position: relative;
-
         min-height: 0;
-        padding: 30px 22px 40px;
+        padding: 86px 22px 110px;
       }
 
       .challenge-layout {
@@ -850,13 +755,11 @@
       .challenge-copy {
         position: relative;
         z-index: 2;
-
         max-width: 680px;
       }
 
       .challenge-copy h1 {
         max-width: 610px;
-
         font-size: 47px;
       }
 
@@ -865,7 +768,6 @@
         right: -55px;
         bottom: 0;
         z-index: 1;
-
         opacity: 0.30;
         pointer-events: none;
       }
@@ -877,7 +779,6 @@
       .challenge-cta {
         position: relative;
         z-index: 3;
-
         max-width: 610px;
       }
 
@@ -899,8 +800,10 @@
       }
 
       .challenge-container {
-        padding-right: 18px;
-        padding-left: 18px;
+        padding:
+          70px
+          18px
+          100px;
       }
 
       .challenge-copy h1 {
@@ -910,39 +813,27 @@
 
       .challenge-cta {
         min-height: 70px;
-
         font-size: 22px;
       }
 
       .challenge-dates {
         margin: 23px 0;
-
         font-size: 18px;
       }
 
       .challenge-points {
         grid-template-columns: 1fr;
         gap: 8px;
-
         font-size: 20px;
       }
 
       .challenge-trophy-wrap {
         right: -105px;
-
         opacity: 0.22;
       }
 
       .name-row {
         grid-template-columns: 1fr;
-      }
-
-      .nav {
-        margin-bottom: 36px;
-      }
-
-      .nav-links {
-        display: none;
       }
 
       .hero-card {
@@ -961,7 +852,6 @@
 
       .challenge-cta {
         padding: 12px 15px;
-
         font-size: 20px;
       }
 
@@ -980,27 +870,23 @@
 
   <header class="challenge-header">
     <div class="challenge-header-inner">
-
       <img
         class="challenge-header-logo"
         src="logo2.png"
         alt="HockeyNative"
       />
-
     </div>
   </header>
 
   <!-- =====================================================
-       STICKHANDLING CHALLENGE HERO
+       STICKHANDLING CHALLENGE
        ===================================================== -->
 
   <section
     class="challenge-hero"
     id="challenge"
   >
-
     <div class="challenge-container">
-
       <div class="challenge-layout">
 
         <div class="challenge-copy">
@@ -1048,17 +934,18 @@
             </div>
 
           </div>
-
         </div>
 
         <div class="challenge-trophy-wrap">
-
+          <img
+            class="challenge-trophy"
+            src="trophy.png"
+            alt="HockeyNative challenge trophy"
+          />
         </div>
 
       </div>
-
     </div>
-
   </section>
 
   <!-- =====================================================
@@ -1072,7 +959,6 @@
     aria-modal="true"
     aria-labelledby="registrationTitle"
   >
-
     <div class="registration-modal">
 
       <button
@@ -1102,7 +988,6 @@
         >
 
           <div class="field">
-
             <label for="organizationName">
               Group, team or organization name
             </label>
@@ -1115,13 +1000,11 @@
               autocomplete="organization"
               required
             />
-
           </div>
 
           <div class="name-row">
 
             <div class="field">
-
               <label for="firstName">
                 Organizer first name
               </label>
@@ -1134,11 +1017,9 @@
                 autocomplete="given-name"
                 required
               />
-
             </div>
 
             <div class="field">
-
               <label for="lastName">
                 Organizer last name
               </label>
@@ -1151,13 +1032,11 @@
                 autocomplete="family-name"
                 required
               />
-
             </div>
 
           </div>
 
           <div class="field">
-
             <label for="email">
               Email
             </label>
@@ -1170,11 +1049,9 @@
               autocomplete="email"
               required
             />
-
           </div>
 
           <div class="field">
-
             <label for="phone">
               Phone number
             </label>
@@ -1187,7 +1064,6 @@
               autocomplete="tel"
               required
             />
-
           </div>
 
           <div
@@ -1205,14 +1081,12 @@
           </button>
 
         </form>
-
       </div>
 
       <div
         class="registration-success"
         id="registrationSuccessView"
       >
-
         <div class="success-icon">
           ✓
         </div>
@@ -1246,47 +1120,17 @@
         >
           Done
         </button>
-
       </div>
 
     </div>
-
   </div>
 
   <!-- =====================================================
        EXISTING HOCKEYNATIVE WEBSITE
+       Duplicate logo and navigation tabs removed.
        ===================================================== -->
 
   <main class="page">
-
-    <nav class="nav">
-
-      <img
-        src="logo2.png"
-        alt="HockeyNative logo"
-      />
-
-      <div class="nav-links">
-
-        <a href="#challenge">
-          Challenge
-        </a>
-
-        <a href="#features">
-          Features
-        </a>
-
-        <a href="#pricing">
-          Pricing
-        </a>
-
-        <a href="/privacy">
-          Privacy
-        </a>
-
-      </div>
-
-    </nav>
 
     <section class="hero">
 
@@ -1328,11 +1172,9 @@
           </a>
 
         </div>
-
       </div>
 
       <div class="phone-card">
-
         <div class="mock-phone">
 
           <img
@@ -1368,7 +1210,6 @@
           </div>
 
         </div>
-
       </div>
 
     </section>
@@ -1377,7 +1218,6 @@
       class="section"
       id="features"
     >
-
       <h2>
         Built for serious reps.
       </h2>
@@ -1385,7 +1225,6 @@
       <div class="features">
 
         <div class="feature-card">
-
           <h3>
             Timed drills
           </h3>
@@ -1394,11 +1233,9 @@
             Train with structured stickhandling drills including Wide Sweep,
             Straight Line, Zipper, Parallelogram, and Figure Eight.
           </p>
-
         </div>
 
         <div class="feature-card">
-
           <h3>
             Video review
           </h3>
@@ -1407,11 +1244,9 @@
             Record attempts, save best runs, and review performance over time
             to improve technique and consistency.
           </p>
-
         </div>
 
         <div class="feature-card">
-
           <h3>
             Rankings
           </h3>
@@ -1420,18 +1255,15 @@
             Compete on leaderboards and compare performance across drills,
             ages, regions, and player profiles.
           </p>
-
         </div>
 
       </div>
-
     </section>
 
     <section
       class="pricing"
       id="pricing"
     >
-
       <div class="pricing-card">
 
         <div class="eyebrow">
@@ -1465,7 +1297,6 @@
         </a>
 
       </div>
-
     </section>
 
     <footer class="footer">
@@ -1475,7 +1306,6 @@
       </div>
 
       <div>
-
         <a href="/privacy">
           Privacy
         </a>
@@ -1483,7 +1313,6 @@
         <a href="tel:+17014291903">
           Customer Support Phone
         </a>
-
       </div>
 
     </footer>
@@ -1495,21 +1324,10 @@
     =========================================================
     BACKEND CONFIGURATION
     =========================================================
-
-    This page expects a Supabase Edge Function named:
-
-    register-challenge-team
-
-    Never place your Resend API key or Supabase service-role
-    key inside this HTML file.
     */
 
     const REGISTRATION_FUNCTION_URL =
       "https://fyncbcraeayyrrvfhgdj.supabase.co/functions/v1/register-challenge-team";
-
-    /*
-      Replace this with your public Supabase anon key.
-    */
 
     const SUPABASE_ANON_KEY =
       "PASTE_YOUR_PUBLIC_SUPABASE_ANON_KEY_HERE";
