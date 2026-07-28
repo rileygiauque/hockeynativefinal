@@ -146,25 +146,38 @@
     }
 
     /*
-      Fade only at the bottom edge into the regular page.
-      This is not an overlay over the whole background.
-    */
+  Fade the challenge image into the blue area
+  at both the top and bottom.
+*/
 
-    .challenge-hero::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 110px;
-      pointer-events: none;
-      background: linear-gradient(
-        to bottom,
-        rgba(10, 31, 54, 0),
-        #0a1f36
-      );
-    }
+.challenge-hero::before,
+.challenge-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  height: 110px;
+  pointer-events: none;
+}
 
+.challenge-hero::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    #0a2743,
+    rgba(10, 39, 67, 0)
+  );
+}
+
+.challenge-hero::after {
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 31, 54, 0),
+    #0a1f36
+  );
+}
 
 .challenge-container {
   position: relative;
@@ -794,28 +807,33 @@
 
     @media (max-width: 650px) {
 
-      .challenge-header-inner {
-  padding: 15px 18px;
-  gap: 12px;
+.challenge-header-inner {
+  padding: 14px 14px;
+  gap: 10px;
 }
 
 .challenge-header-logo {
-  width: 170px;
-  max-width: 46%;
+  width: 145px;
+  max-width: 38%;
+  flex-shrink: 0;
 }
 
 .challenge-store-buttons {
-  gap: 6px;
+  gap: 5px;
+  flex-shrink: 0;
 }
 
-.challenge-store-button,
-.challenge-store-button img {
-  height: 32px;
+.challenge-store-button {
+  width: 100px;
+  height: 31px;
 }
-      .challenge-header-logo {
-        width: 220px;
-        max-width: 78%;
-      }
+
+.challenge-store-button img {
+  width: 100px;
+  height: 31px;
+  max-width: none;
+  object-fit: fill;
+}
 
 .challenge-container {
   padding:
@@ -961,7 +979,7 @@
             </strong>
             and
             <strong>
-              ENDS September 15<sup>th</sup>
+              ENDS September 15, 2026<sup>th</sup>
             </strong>
           </p>
 
