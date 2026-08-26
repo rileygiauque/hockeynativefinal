@@ -1652,216 +1652,1335 @@
       </div>
     </section>
 
-        <!-- =====================================================
-         HOCKEYNATIVE AROUND THE WORLD
-         ===================================================== -->
+       <!-- =====================================================
+     HOCKEYNATIVE WORLDWIDE
+     FULL-WIDTH INTERACTIVE 3D GLOBE SECTION
+     ===================================================== -->
 
-    <section class="global-section">
+<style>
 
-      <div class="eyebrow">
+  /* =====================================================
+     WORLDWIDE SECTION
+     ===================================================== */
+
+  .hn-world-section {
+    position: relative;
+
+    width: 100vw;
+    max-width: none;
+
+    margin-top: 48px;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    padding: 72px 28px 76px;
+
+    overflow: hidden;
+
+    border-top:
+      1px solid
+      rgba(147, 197, 253, 0.18);
+
+    border-bottom:
+      1px solid
+      rgba(147, 197, 253, 0.18);
+
+    background:
+      radial-gradient(
+        circle at 75% 45%,
+        rgba(37, 99, 235, 0.22),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 20% 10%,
+        rgba(14, 165, 233, 0.08),
+        transparent 32%
+      ),
+      linear-gradient(
+        135deg,
+        #123f68 0%,
+        #0b2c4a 44%,
+        #06172b 100%
+      );
+  }
+
+
+  /* =====================================================
+     INNER CONTENT WIDTH
+     ===================================================== */
+
+  .hn-world-inner {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1440px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(500px, 0.95fr)
+      minmax(430px, 1.05fr);
+
+    gap: 72px;
+
+    align-items: center;
+  }
+
+
+  /* =====================================================
+     LEFT SIDE
+     ===================================================== */
+
+  .hn-world-copy {
+    min-width: 0;
+  }
+
+  .hn-world-eyebrow {
+    margin-bottom: 15px;
+
+    color: #93c5fd;
+
+    text-transform: uppercase;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 0.14em;
+  }
+
+  .hn-world-copy h2 {
+    max-width: 700px;
+
+    margin:
+      0
+      0
+      17px;
+
+    color: white;
+
+    font-size:
+      clamp(
+        40px,
+        4vw,
+        60px
+      );
+
+    font-weight: 850;
+
+    line-height: 1.04;
+
+    letter-spacing: -0.045em;
+
+    text-align: left;
+  }
+
+  .hn-world-description {
+    max-width: 700px;
+
+    margin:
+      0
+      0
+      31px;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.72
+      );
+
+    font-size: 18px;
+
+    line-height: 1.55;
+  }
+
+
+  /* =====================================================
+     COUNTRY BUTTONS
+     ===================================================== */
+
+  .hn-country-list {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+    gap: 12px;
+
+    width: 100%;
+    max-width: 740px;
+  }
+
+  .hn-country-button {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 10px;
+
+    width: 100%;
+
+    min-height: 64px;
+
+    padding:
+      13px
+      15px;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.14
+      );
+
+    border-radius: 15px;
+
+    color: white;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.065
+      );
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hn-country-button:hover {
+    transform:
+      translateY(-2px);
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.11
+      );
+
+    border-color:
+      rgba(
+        255,
+        255,
+        255,
+        0.25
+      );
+
+    box-shadow:
+      0 10px 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.18
+      );
+  }
+
+  .hn-country-button.hn-active {
+    border-color:
+      rgba(
+        147,
+        197,
+        253,
+        0.95
+      );
+
+    background:
+      rgba(
+        96,
+        165,
+        250,
+        0.18
+      );
+
+    box-shadow:
+      0 0 0 2px
+      rgba(
+        96,
+        165,
+        250,
+        0.13
+      );
+  }
+
+  .hn-country-flag {
+    flex:
+      0
+      0
+      auto;
+
+    font-size: 24px;
+
+    line-height: 1;
+  }
+
+
+  /* =====================================================
+     RIGHT SIDE / GLOBE
+     ===================================================== */
+
+  .hn-globe-panel {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+  }
+
+  .hn-globe-stage {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 520px;
+  }
+
+  .hn-globe-glow {
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 500px;
+
+    height: 500px;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      );
+
+    border-radius: 50%;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(
+          59,
+          130,
+          246,
+          0.20
+        )
+        0%,
+
+        rgba(
+          59,
+          130,
+          246,
+          0.08
+        )
+        45%,
+
+        transparent
+        72%
+      );
+
+    filter:
+      blur(30px);
+
+    pointer-events: none;
+  }
+
+  #hnRealGlobe {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 500px;
+
+    cursor: grab;
+  }
+
+  #hnRealGlobe:active {
+    cursor: grabbing;
+  }
+
+  #hnRealGlobe canvas {
+    display: block;
+
+    outline: none;
+  }
+
+  .hn-globe-country {
+    position: relative;
+
+    z-index: 3;
+
+    margin-top: -4px;
+
+    color: white;
+
+    font-size: 32px;
+
+    font-weight: 850;
+
+    letter-spacing: -0.025em;
+
+    text-align: center;
+  }
+
+  .hn-globe-hint {
+    position: relative;
+
+    z-index: 3;
+
+    margin:
+      8px
+      0
+      0;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.66
+      );
+
+    font-size: 15px;
+
+    text-align: center;
+  }
+
+
+  /* =====================================================
+     TABLET
+     ===================================================== */
+
+  @media (max-width: 900px) {
+
+    .hn-world-section {
+      padding:
+        58px
+        22px
+        64px;
+    }
+
+    .hn-world-inner {
+      grid-template-columns: 1fr;
+
+      gap: 40px;
+    }
+
+    .hn-world-copy {
+      text-align: center;
+    }
+
+    .hn-world-copy h2 {
+      max-width: 720px;
+
+      margin-left: auto;
+
+      margin-right: auto;
+
+      text-align: center;
+    }
+
+    .hn-world-description {
+      max-width: 680px;
+
+      margin-left: auto;
+
+      margin-right: auto;
+
+      text-align: center;
+    }
+
+    .hn-country-list {
+      max-width: 720px;
+
+      margin:
+        0
+        auto;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0, 1fr)
+        );
+    }
+
+    .hn-globe-stage {
+      min-height: 440px;
+    }
+
+    #hnRealGlobe {
+      min-height: 430px;
+    }
+
+  }
+
+
+  /* =====================================================
+     PHONE
+     ===================================================== */
+
+  @media (max-width: 650px) {
+
+    .hn-world-section {
+      width: 100vw;
+
+      margin-left:
+        calc(
+          50% - 50vw
+        );
+
+      margin-right:
+        calc(
+          50% - 50vw
+        );
+
+      padding:
+        46px
+        14px
+        52px;
+    }
+
+    .hn-world-inner {
+      gap: 32px;
+    }
+
+    .hn-world-eyebrow {
+      font-size: 12px;
+    }
+
+    .hn-world-copy h2 {
+      font-size: 36px;
+
+      line-height: 1.07;
+    }
+
+    .hn-world-description {
+      margin-bottom: 24px;
+
+      font-size: 16px;
+
+      line-height: 1.5;
+    }
+
+    .hn-country-list {
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0, 1fr)
+        );
+
+      gap: 9px;
+    }
+
+    .hn-country-button {
+      min-height: 58px;
+
+      padding:
+        11px
+        10px;
+
+      gap: 7px;
+
+      font-size: 13px;
+    }
+
+    .hn-country-flag {
+      font-size: 20px;
+    }
+
+    .hn-globe-stage {
+      min-height: 350px;
+    }
+
+    #hnRealGlobe {
+      min-height: 340px;
+    }
+
+    .hn-globe-glow {
+      width: 340px;
+
+      height: 340px;
+    }
+
+    .hn-globe-country {
+      font-size: 26px;
+    }
+
+    .hn-globe-hint {
+      font-size: 14px;
+    }
+
+  }
+
+
+  /* =====================================================
+     VERY SMALL PHONES
+     ===================================================== */
+
+  @media (max-width: 390px) {
+
+    .hn-world-copy h2 {
+      font-size: 32px;
+    }
+
+    .hn-country-button {
+      font-size: 12px;
+    }
+
+  }
+
+</style>
+
+
+<section
+  class="hn-world-section"
+  id="worldwide"
+>
+
+  <div class="hn-world-inner">
+
+
+    <!-- =================================================
+         LEFT SIDE
+         ================================================= -->
+
+    <div class="hn-world-copy">
+
+      <div class="hn-world-eyebrow">
         HockeyNative Worldwide
       </div>
 
       <h2>
-        Used by hockey players around the world.
+        HockeyNative is being used around the world.
       </h2>
 
-      <p>
-        HockeyNative is helping players train, compete, and improve across the globe.
+      <p class="hn-world-description">
+        Players around the globe are training and competing with HockeyNative.
+        Select a country to explore our growing worldwide community.
       </p>
 
-      <div class="country-grid">
 
-        <div class="country-card">
-          <span class="country-flag">🇺🇸</span>
-          United States
-        </div>
+      <div class="hn-country-list">
 
-        <div class="country-card">
-          <span class="country-flag">🇨🇦</span>
-          Canada
-        </div>
 
-        <div class="country-card">
-          <span class="country-flag">🇯🇵</span>
-          Japan
-        </div>
+        <!-- UNITED STATES -->
 
-        <div class="country-card">
-          <span class="country-flag">🇬🇧</span>
-          United Kingdom
-        </div>
+        <button
+          class="hn-country-button hn-active"
+          type="button"
+          data-hn-country="united-states"
+        >
+          <span class="hn-country-flag">
+            🇺🇸
+          </span>
 
-        <div class="country-card">
-          <span class="country-flag">🇩🇰</span>
-          Denmark
-        </div>
-
-        <div class="country-card">
-          <span class="country-flag">🇸🇪</span>
-          Sweden
-        </div>
-
-        <div class="country-card">
-          <span class="country-flag">🇿🇦</span>
-          South Africa
-        </div>
-
-        <div class="country-card">
-          <span class="country-flag">🇸🇰</span>
-          Slovakia
-        </div>
-
-        <div class="country-card">
-          <span class="country-flag">🇰🇷</span>
-          Republic of Korea
-        </div>
-
-      </div>
-
-    </section>
-
-        <!-- =====================================================
-         HOCKEYNATIVE WORLDWIDE
-         ===================================================== -->
-
-    <section class="world-section" id="worldwide">
-
-      <div class="world-layout">
-
-        <div class="world-copy">
-
-          <div class="eyebrow">
-            HockeyNative Worldwide
-          </div>
-
-          <h2>
-            HockeyNative is being used around the world.
-          </h2>
-
-          <p>
-            Click a country below and the globe will spin to that location.
-          </p>
-
-          <div class="country-list">
-
-            <button
-              class="country-button active"
-              type="button"
-              data-country="united-states"
-            >
-              <span class="country-flag">🇺🇸</span>
-              <span>United States</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="canada"
-            >
-              <span class="country-flag">🇨🇦</span>
-              <span>Canada</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="japan"
-            >
-              <span class="country-flag">🇯🇵</span>
-              <span>Japan</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="united-kingdom"
-            >
-              <span class="country-flag">🇬🇧</span>
-              <span>United Kingdom</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="denmark"
-            >
-              <span class="country-flag">🇩🇰</span>
-              <span>Denmark</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="sweden"
-            >
-              <span class="country-flag">🇸🇪</span>
-              <span>Sweden</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="south-africa"
-            >
-              <span class="country-flag">🇿🇦</span>
-              <span>South Africa</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="slovakia"
-            >
-              <span class="country-flag">🇸🇰</span>
-              <span>Slovakia</span>
-            </button>
-
-            <button
-              class="country-button"
-              type="button"
-              data-country="republic-of-korea"
-            >
-              <span class="country-flag">🇰🇷</span>
-              <span>Republic of Korea</span>
-            </button>
-
-          </div>
-
-        </div>
-
-        <div class="globe-panel">
-
-          <div class="globe-stage">
-            <div class="globe">
-              <div
-                class="globe-surface"
-                id="worldGlobeSurface"
-              ></div>
-
-              <div
-                class="globe-marker"
-                id="globeMarker"
-              ></div>
-            </div>
-          </div>
-
-          <div
-            class="globe-country-label"
-            id="globeCountryLabel"
-          >
+          <span>
             United States
-          </div>
+          </span>
+        </button>
 
-          <p class="globe-hint">
-            Select a country to explore.
-          </p>
 
-        </div>
+        <!-- CANADA -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="canada"
+        >
+          <span class="hn-country-flag">
+            🇨🇦
+          </span>
+
+          <span>
+            Canada
+          </span>
+        </button>
+
+
+        <!-- JAPAN -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="japan"
+        >
+          <span class="hn-country-flag">
+            🇯🇵
+          </span>
+
+          <span>
+            Japan
+          </span>
+        </button>
+
+
+        <!-- UNITED KINGDOM -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="united-kingdom"
+        >
+          <span class="hn-country-flag">
+            🇬🇧
+          </span>
+
+          <span>
+            United Kingdom
+          </span>
+        </button>
+
+
+        <!-- DENMARK -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="denmark"
+        >
+          <span class="hn-country-flag">
+            🇩🇰
+          </span>
+
+          <span>
+            Denmark
+          </span>
+        </button>
+
+
+        <!-- SWEDEN -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="sweden"
+        >
+          <span class="hn-country-flag">
+            🇸🇪
+          </span>
+
+          <span>
+            Sweden
+          </span>
+        </button>
+
+
+        <!-- SOUTH AFRICA -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="south-africa"
+        >
+          <span class="hn-country-flag">
+            🇿🇦
+          </span>
+
+          <span>
+            South Africa
+          </span>
+        </button>
+
+
+        <!-- SLOVAKIA -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="slovakia"
+        >
+          <span class="hn-country-flag">
+            🇸🇰
+          </span>
+
+          <span>
+            Slovakia
+          </span>
+        </button>
+
+
+        <!-- REPUBLIC OF KOREA -->
+
+        <button
+          class="hn-country-button"
+          type="button"
+          data-hn-country="republic-of-korea"
+        >
+          <span class="hn-country-flag">
+            🇰🇷
+          </span>
+
+          <span>
+            Republic of Korea
+          </span>
+        </button>
+
 
       </div>
 
-    </section>
+    </div>
+
+
+    <!-- =================================================
+         RIGHT SIDE
+         ================================================= -->
+
+    <div class="hn-globe-panel">
+
+      <div class="hn-globe-stage">
+
+        <div class="hn-globe-glow"></div>
+
+        <div
+          id="hnRealGlobe"
+          aria-label="Interactive globe showing countries where HockeyNative is used"
+        ></div>
+
+      </div>
+
+
+      <div
+        class="hn-globe-country"
+        id="hnGlobeCountryLabel"
+      >
+        United States
+      </div>
+
+
+      <p class="hn-globe-hint">
+        Drag the globe or select a country.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     REAL 3D GLOBE LIBRARY
+     ===================================================== -->
+
+<script
+  src="https://unpkg.com/globe.gl"
+></script>
+
+
+<script>
+
+(function () {
+
+  /* =====================================================
+     ELEMENTS
+     ===================================================== */
+
+  const globeElement =
+    document.getElementById(
+      "hnRealGlobe"
+    );
+
+  const countryLabel =
+    document.getElementById(
+      "hnGlobeCountryLabel"
+    );
+
+  const buttons =
+    document.querySelectorAll(
+      ".hn-country-button"
+    );
+
+
+  /* =====================================================
+     REAL COUNTRY LOCATIONS
+     ===================================================== */
+
+  const countries = {
+
+    "united-states": {
+      label:
+        "United States",
+
+      lat:
+        38.0,
+
+      lng:
+        -97.0,
+
+      altitude:
+        1.75
+    },
+
+
+    "canada": {
+      label:
+        "Canada",
+
+      lat:
+        56.13,
+
+      lng:
+        -106.35,
+
+      altitude:
+        1.80
+    },
+
+
+    "japan": {
+      label:
+        "Japan",
+
+      lat:
+        36.20,
+
+      lng:
+        138.25,
+
+      altitude:
+        1.72
+    },
+
+
+    "united-kingdom": {
+      label:
+        "United Kingdom",
+
+      lat:
+        55.38,
+
+      lng:
+        -3.44,
+
+      altitude:
+        1.63
+    },
+
+
+    "denmark": {
+      label:
+        "Denmark",
+
+      lat:
+        56.26,
+
+      lng:
+        9.50,
+
+      altitude:
+        1.58
+    },
+
+
+    "sweden": {
+      label:
+        "Sweden",
+
+      lat:
+        60.13,
+
+      lng:
+        18.64,
+
+      altitude:
+        1.64
+    },
+
+
+    "south-africa": {
+      label:
+        "South Africa",
+
+      lat:
+        -30.56,
+
+      lng:
+        22.94,
+
+      altitude:
+        1.70
+    },
+
+
+    "slovakia": {
+      label:
+        "Slovakia",
+
+      lat:
+        48.67,
+
+      lng:
+        19.70,
+
+      altitude:
+        1.56
+    },
+
+
+    "republic-of-korea": {
+      label:
+        "Republic of Korea",
+
+      lat:
+        35.91,
+
+      lng:
+        127.77,
+
+      altitude:
+        1.62
+    }
+
+  };
+
+
+  /* =====================================================
+     STOP IF LIBRARY DID NOT LOAD
+     ===================================================== */
+
+  if (
+    !globeElement ||
+    typeof Globe === "undefined"
+  ) {
+
+    console.warn(
+      "HockeyNative globe library did not load."
+    );
+
+    return;
+
+  }
+
+
+  /* =====================================================
+     CREATE REAL EARTH
+     ===================================================== */
+
+  const world =
+    Globe()(globeElement)
+
+      .backgroundColor(
+        "rgba(0,0,0,0)"
+      )
+
+      .globeImageUrl(
+        "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+      )
+
+      .bumpImageUrl(
+        "https://unpkg.com/three-globe/example/img/earth-topology.png"
+      )
+
+      .showAtmosphere(
+        true
+      )
+
+      .atmosphereColor(
+        "#60a5fa"
+      )
+
+      .atmosphereAltitude(
+        0.16
+      )
+
+      .ringsData([
+        {
+          lat: 38.0,
+          lng: -97.0
+        }
+      ])
+
+      .ringLat(
+        location =>
+          location.lat
+      )
+
+      .ringLng(
+        location =>
+          location.lng
+      )
+
+      .ringColor(
+        () => [
+          "rgba(255,255,255,0.95)",
+          "rgba(96,165,250,0.15)"
+        ]
+      )
+
+      .ringMaxRadius(
+        4
+      )
+
+      .ringPropagationSpeed(
+        2
+      )
+
+      .ringRepeatPeriod(
+        900
+      );
+
+
+  /* =====================================================
+     GLOBE CONTROLS
+     ===================================================== */
+
+  const controls =
+    world.controls();
+
+  controls.enableDamping =
+    true;
+
+  controls.dampingFactor =
+    0.08;
+
+  controls.autoRotate =
+    true;
+
+  controls.autoRotateSpeed =
+    0.32;
+
+  controls.enablePan =
+    false;
+
+  controls.minDistance =
+    140;
+
+  controls.maxDistance =
+    500;
+
+
+  /* =====================================================
+     STARTING VIEW
+     ===================================================== */
+
+  world.pointOfView(
+    {
+      lat:
+        countries["united-states"].lat,
+
+      lng:
+        countries["united-states"].lng,
+
+      altitude:
+        countries["united-states"].altitude
+    },
+
+    0
+  );
+
+
+  /* =====================================================
+     RESIZE GLOBE
+     ===================================================== */
+
+  function resizeGlobe() {
+
+    const availableWidth =
+      globeElement.clientWidth;
+
+    let size =
+      Math.min(
+        availableWidth,
+        510
+      );
+
+
+    if (
+      window.innerWidth <= 900
+    ) {
+
+      size =
+        Math.min(
+          availableWidth,
+          430
+        );
+
+    }
+
+
+    if (
+      window.innerWidth <= 650
+    ) {
+
+      size =
+        Math.min(
+          availableWidth,
+          340
+        );
+
+    }
+
+
+    world
+      .width(size)
+      .height(size);
+
+  }
+
+
+  resizeGlobe();
+
+
+  window.addEventListener(
+    "resize",
+    resizeGlobe
+  );
+
+
+  /* =====================================================
+     FOCUS COUNTRY
+     ===================================================== */
+
+  function focusCountry(
+    countryKey
+  ) {
+
+    const country =
+      countries[
+        countryKey
+      ];
+
+
+    if (!country) {
+      return;
+    }
+
+
+    countryLabel.textContent =
+      country.label;
+
+
+    buttons.forEach(
+      button => {
+
+        const isSelected =
+          button.dataset.hnCountry ===
+          countryKey;
+
+
+        button.classList.toggle(
+          "hn-active",
+          isSelected
+        );
+
+      }
+    );
+
+
+    controls.autoRotate =
+      false;
+
+
+    world.ringsData([
+      {
+        lat:
+          country.lat,
+
+        lng:
+          country.lng
+      }
+    ]);
+
+
+    world.pointOfView(
+      {
+        lat:
+          country.lat,
+
+        lng:
+          country.lng,
+
+        altitude:
+          country.altitude
+      },
+
+      1350
+    );
+
+  }
+
+
+  /* =====================================================
+     COUNTRY BUTTON EVENTS
+     ===================================================== */
+
+  buttons.forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          focusCountry(
+            this.dataset.hnCountry
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+  /* =====================================================
+     START ON UNITED STATES
+     ===================================================== */
+
+  countryLabel.textContent =
+    "United States";
+
+
+})();
+
+</script>
 
     <footer class="footer">
 
