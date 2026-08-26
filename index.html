@@ -1088,6 +1088,24 @@
       font-size: 14px;
     }
 
+    .footer-compete {
+  margin-left: 14px;
+  padding: 0;
+
+  border: 0;
+
+  color: rgba(255, 255, 255, 0.75);
+  background: transparent;
+
+  font: inherit;
+
+  cursor: pointer;
+}
+
+.footer-compete:hover {
+  color: white;
+}
+
     .footer a {
       margin-left: 14px;
       color: rgba(255, 255, 255, 0.75);
@@ -4378,14 +4396,24 @@ background-repeat: no-repeat;
       </div>
 
       <div>
-        <a href="/privacy">
-          Privacy
-        </a>
 
-        <a href="tel:+17014291903">
-          Customer Support Phone
-        </a>
-      </div>
+  <a href="/privacy">
+    Privacy
+  </a>
+
+  <button
+    class="footer-compete"
+    id="openRegistrationButton"
+    type="button"
+  >
+    Compete
+  </button>
+
+  <a href="tel:+17014291903">
+    Customer Support Phone
+  </a>
+
+</div>
 
     </footer>
 
@@ -4746,32 +4774,38 @@ background-repeat: no-repeat;
     }
 
     function updateMonthlyChallenge() {
-      const contestWindow =
-        getNextMonthlyContestWindow();
+  const contestWindow =
+    getNextMonthlyContestWindow();
 
-      nextContestStart =
-        contestWindow.start;
+  nextContestStart =
+    contestWindow.start;
 
-      nextContestEnd =
-        contestWindow.end;
+  nextContestEnd =
+    contestWindow.end;
 
-      challengeStartDate.textContent =
-        `STARTS ${formatChallengeDate(nextContestStart)}`;
+  if (challengeStartDate) {
+    challengeStartDate.textContent =
+      `STARTS ${formatChallengeDate(nextContestStart)}`;
+  }
 
-      challengeEndDate.textContent =
-        `ENDS ${formatChallengeDate(nextContestEnd)}`;
+  if (challengeEndDate) {
+    challengeEndDate.textContent =
+      `ENDS ${formatChallengeDate(nextContestEnd)}`;
+  }
 
-      const registrationIsOpen =
-        new Date() < nextContestStart;
+  const registrationIsOpen =
+    new Date() < nextContestStart;
+      
+  if (openButton) {
+    openButton.disabled =
+      !registrationIsOpen;
 
-      openButton.disabled =
-        !registrationIsOpen;
-
-      openButton.textContent =
-        registrationIsOpen
-          ? "Click to Register, It’s Free!"
-          : "Registration Closed";
-    }
+    openButton.textContent =
+      registrationIsOpen
+        ? "Compete"
+        : "Registration Closed";
+  }
+}
 
     updateMonthlyChallenge();
 
