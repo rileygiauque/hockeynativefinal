@@ -1709,6 +1709,112 @@
      INNER CONTENT WIDTH
      ===================================================== */
 
+  /* =====================================================
+     SUBTLE HOCKEY RINK BACKGROUND
+     ===================================================== */
+
+  .hn-world-section::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.07;
+
+    background:
+      /* CENTER LINE */
+      linear-gradient(
+        90deg,
+        transparent calc(50% - 1px),
+        rgba(255, 255, 255, 0.95) calc(50% - 1px),
+        rgba(255, 255, 255, 0.95) calc(50% + 1px),
+        transparent calc(50% + 1px)
+      ),
+
+      /* LEFT BLUE LINE */
+      linear-gradient(
+        90deg,
+        transparent 32%,
+        rgba(147, 197, 253, 0.95) 32%,
+        rgba(147, 197, 253, 0.95) calc(32% + 2px),
+        transparent calc(32% + 2px)
+      ),
+
+      /* RIGHT BLUE LINE */
+      linear-gradient(
+        90deg,
+        transparent 68%,
+        rgba(147, 197, 253, 0.95) 68%,
+        rgba(147, 197, 253, 0.95) calc(68% + 2px),
+        transparent calc(68% + 2px)
+      ),
+
+      /* CENTER CIRCLE */
+      radial-gradient(
+        circle at 50% 50%,
+        transparent 0 92px,
+        rgba(255, 255, 255, 0.95) 93px 95px,
+        transparent 96px
+      ),
+
+      /* LEFT FACE-OFF CIRCLE TOP */
+      radial-gradient(
+        circle at 22% 30%,
+        transparent 0 48px,
+        rgba(255, 255, 255, 0.85) 49px 51px,
+        transparent 52px
+      ),
+
+      /* LEFT FACE-OFF CIRCLE BOTTOM */
+      radial-gradient(
+        circle at 22% 70%,
+        transparent 0 48px,
+        rgba(255, 255, 255, 0.85) 49px 51px,
+        transparent 52px
+      ),
+
+      /* RIGHT FACE-OFF CIRCLE TOP */
+      radial-gradient(
+        circle at 78% 30%,
+        transparent 0 48px,
+        rgba(255, 255, 255, 0.85) 49px 51px,
+        transparent 52px
+      ),
+
+      /* RIGHT FACE-OFF CIRCLE BOTTOM */
+      radial-gradient(
+        circle at 78% 70%,
+        transparent 0 48px,
+        rgba(255, 255, 255, 0.85) 49px 51px,
+        transparent 52px
+      );
+  }
+
+  .hn-world-section::after {
+    content: "";
+
+    position: absolute;
+
+    left: 3%;
+    right: 3%;
+    top: 7%;
+    bottom: 7%;
+
+    z-index: 0;
+
+    border:
+      2px solid
+      rgba(255, 255, 255, 0.07);
+
+    border-radius: 120px;
+
+    pointer-events: none;
+  }
+  
 .hn-world-inner {
   position: relative;
   z-index: 2;
