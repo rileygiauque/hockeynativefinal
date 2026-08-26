@@ -85,7 +85,9 @@
     */
 
 .challenge-header {
-  background: #0a2743;
+  position: relative;
+  z-index: 20;
+  background: transparent;
   min-height: 0;
 }
 
@@ -535,23 +537,28 @@
   position: relative;
   isolation: isolate;
   display: block;
+
   width: 100vw;
+
+  margin-top: -90px;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: 82px 42px 88px;
+
+  padding: 165px 42px 88px;
+
   overflow: hidden;
 
   background:
     linear-gradient(
       90deg,
-      rgba(4, 17, 32, 0.93) 0%,
-      rgba(4, 17, 32, 0.82) 48%,
-      rgba(4, 17, 32, 0.58) 100%
+      rgba(4, 17, 32, 0.90) 0%,
+      rgba(4, 17, 32, 0.78) 48%,
+      rgba(4, 17, 32, 0.52) 100%
     ),
     url("challenge-background.png");
 
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
 }
 
@@ -567,14 +574,13 @@
 
 .hero::before {
   top: 0;
-  height: 55px;
+  height: 90px;
 
   background:
     linear-gradient(
       to bottom,
-      #0a2743 0%,
-      rgba(10, 39, 67, 0.72) 22%,
-      rgba(10, 39, 67, 0.30) 55%,
+      rgba(10, 39, 67, 0.38) 0%,
+      rgba(10, 39, 67, 0.18) 45%,
       rgba(10, 39, 67, 0) 100%
     );
 }
@@ -1327,9 +1333,15 @@
         grid-template-columns: 1fr;
       }
 
-     .hero {
-  padding: 28px 18px 62px;
-  background-position: 62% center;
+.hero {
+  margin-top: -54px;
+
+  padding:
+    88px
+    18px
+    62px;
+
+  background-position: 62% top;
 }
 
       .hero-card {
