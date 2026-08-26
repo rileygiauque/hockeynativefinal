@@ -1631,6 +1631,1097 @@
 
     </section>
 
+     <!-- =====================================================
+     REAL PLAYERS / SOCIAL PROOF VIDEOS
+     ===================================================== -->
+
+<style>
+
+  .hn-player-section {
+    position: relative;
+    width: 100vw;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    padding: 72px 42px 78px;
+
+    background:
+      linear-gradient(
+        180deg,
+        #061221 0%,
+        #081a2e 100%
+      );
+
+    border-top:
+      1px solid
+      rgba(255, 255, 255, 0.08);
+
+    overflow: hidden;
+  }
+
+  .hn-player-inner {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  .hn-player-eyebrow {
+    margin-bottom: 12px;
+
+    color: #93c5fd;
+
+    text-transform: uppercase;
+
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+
+    text-align: center;
+  }
+
+  .hn-player-heading {
+    margin:
+      0
+      auto
+      12px;
+
+    color: white;
+
+    font-size:
+      clamp(
+        36px,
+        4vw,
+        54px
+      );
+
+    font-weight: 850;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    text-align: center;
+  }
+
+  .hn-player-description {
+    max-width: 680px;
+
+    margin:
+      0
+      auto
+      38px;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.68
+      );
+
+    font-size: 17px;
+    line-height: 1.55;
+
+    text-align: center;
+  }
+
+
+  /* =====================================================
+     FEATURED + PLAYER VIDEO LAYOUT
+     ===================================================== */
+
+  .hn-video-showcase {
+    display: grid;
+
+    grid-template-columns:
+      360px
+      minmax(0, 1fr);
+
+    gap: 18px;
+
+    align-items: stretch;
+
+    width: 100%;
+    max-width: 1320px;
+
+    height: 640px;
+
+    margin: 0 auto;
+  }
+
+
+  /* =====================================================
+     FEATURED VIDEO
+     360 x 640 = EXACT 9:16
+     ===================================================== */
+
+  .hn-featured-video-wrap {
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+  }
+
+  .hn-featured-video-card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.16);
+
+    border-radius: 24px;
+
+    background: #000;
+
+    box-shadow:
+      0 24px 55px
+      rgba(0, 0, 0, 0.38);
+  }
+
+  .hn-featured-video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #000;
+  }
+
+  .hn-featured-video-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding:
+      90px
+      20px
+      20px;
+
+    background:
+      linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.88)
+      );
+
+    pointer-events: none;
+  }
+
+  .hn-featured-badge {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    padding:
+      6px
+      10px;
+
+    border:
+      1px solid
+      rgba(147, 197, 253, 0.45);
+
+    border-radius: 999px;
+
+    color: #dbeafe;
+
+    background:
+      rgba(37, 99, 235, 0.26);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .hn-featured-title {
+    color: white;
+
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .hn-featured-subtitle {
+    margin-top: 5px;
+
+    color:
+      rgba(255, 255, 255, 0.72);
+
+    font-size: 14px;
+  }
+
+
+  /* =====================================================
+     10 SMALLER VIDEOS — 5 ACROSS, 2 ROWS
+     ===================================================== */
+
+  .hn-video-carousel-wrap {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+  }
+
+  .hn-video-carousel {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        5,
+        minmax(0, 1fr)
+      );
+
+    grid-template-rows:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 12px;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    padding: 0;
+  }
+
+  .hn-player-video-card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.13
+      );
+
+    border-radius: 18px;
+
+    background: #020617;
+
+    box-shadow:
+      0 12px 28px
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      );
+  }
+
+  .hn-player-video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    background: #000;
+  }
+
+  .hn-video-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding:
+      44px
+      12px
+      12px;
+
+    background:
+      linear-gradient(
+        transparent,
+        rgba(
+          0,
+          0,
+          0,
+          0.82
+        )
+      );
+
+    pointer-events: none;
+  }
+
+  .hn-video-proof {
+    color: white;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    line-height: 1.15;
+  }
+
+  .hn-video-subtext {
+    margin-top: 3px;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.68
+      );
+
+    font-size: 11px;
+  }
+
+
+  /* =====================================================
+     ARROWS
+     Desktop grid shows all 10, so arrows are hidden.
+     ===================================================== */
+
+  .hn-video-arrow {
+    display: none;
+  }
+
+
+  /* =====================================================
+     TABLET
+     ===================================================== */
+
+  @media (max-width: 900px) {
+
+    .hn-player-section {
+      padding:
+        58px
+        22px
+        64px;
+    }
+
+    .hn-video-showcase {
+      display: block;
+      height: auto;
+    }
+
+    .hn-featured-video-wrap {
+      width: 100%;
+      height: auto;
+
+      margin-bottom: 26px;
+    }
+
+    .hn-featured-video-card {
+      width: min(100%, 360px);
+      height: auto;
+
+      aspect-ratio: 9 / 16;
+
+      margin: 0 auto;
+    }
+
+    .hn-video-carousel-wrap {
+      height: auto;
+    }
+
+    .hn-video-carousel {
+      display: flex;
+
+      height: auto;
+
+      gap: 14px;
+
+      overflow-x: auto;
+
+      padding:
+        2px
+        2px
+        12px;
+
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+
+      scrollbar-width: none;
+    }
+
+    .hn-video-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hn-player-video-card {
+      flex:
+        0
+        0
+        210px;
+
+      width: 210px;
+      height: auto;
+
+      aspect-ratio: 9 / 16;
+
+      scroll-snap-align: start;
+    }
+
+  }
+
+
+  /* =====================================================
+     PHONE
+     ===================================================== */
+
+  @media (max-width: 650px) {
+
+    .hn-player-section {
+      padding:
+        50px
+        14px
+        58px;
+    }
+
+    .hn-player-heading {
+      font-size: 34px;
+    }
+
+    .hn-player-description {
+      margin-bottom: 28px;
+
+      font-size: 15px;
+    }
+
+    .hn-video-showcase {
+      display: block;
+      height: auto;
+    }
+
+    .hn-featured-video-wrap {
+      width: 100%;
+      height: auto;
+
+      margin-bottom: 22px;
+    }
+
+    .hn-featured-video-card {
+      width: min(100%, 320px);
+      height: auto;
+
+      aspect-ratio: 9 / 16;
+
+      margin: 0 auto;
+    }
+
+    .hn-video-carousel-wrap {
+      height: auto;
+    }
+
+    .hn-video-carousel {
+      display: flex;
+
+      height: auto;
+
+      gap: 12px;
+
+      overflow-x: auto;
+
+      padding-bottom: 12px;
+
+      scroll-snap-type: x mandatory;
+
+      scrollbar-width: none;
+    }
+
+    .hn-video-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hn-player-video-card {
+      flex:
+        0
+        0
+        68vw;
+
+      width: auto;
+      height: auto;
+
+      max-width: 270px;
+
+      aspect-ratio: 9 / 16;
+
+      scroll-snap-align: start;
+    }
+
+    .hn-video-proof {
+      font-size: 14px;
+    }
+
+    .hn-video-subtext {
+      font-size: 12px;
+    }
+
+  }
+
+</style>
+
+
+<section
+  class="hn-player-section"
+  id="realPlayers"
+>
+
+  <div class="hn-player-inner">
+
+    <div class="hn-player-eyebrow">
+      Real Players. Real Training.
+    </div>
+
+    <h2 class="hn-player-heading">
+      See the app in action.
+    </h2>
+
+    <p class="hn-player-description">
+      Players around the world are using HockeyNative to train,
+      compete and improve their stickhandling.
+    </p>
+
+
+    <div class="hn-video-showcase">
+
+
+      <!-- =================================================
+           FEATURED VIDEO
+           ================================================= -->
+
+      <div class="hn-featured-video-wrap">
+
+        <div class="hn-featured-video-card">
+
+          <video
+            class="hn-featured-video"
+            src="main.mp4"
+            muted
+            loop
+            playsinline
+            autoplay
+            preload="metadata"
+          ></video>
+
+          <div class="hn-featured-video-overlay">
+
+            <div class="hn-featured-badge">
+              Featured
+            </div>
+
+            <div class="hn-featured-title">
+              HockeyNative in Action
+            </div>
+
+            <div class="hn-featured-subtitle">
+              Real player. Real training.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           10 PLAYER VIDEOS
+           ================================================= -->
+
+      <div class="hn-video-carousel-wrap">
+
+        <button
+          class="hn-video-arrow hn-video-arrow-left"
+          id="hnVideoLeft"
+          type="button"
+          aria-label="Previous videos"
+        >
+          ‹
+        </button>
+
+
+        <div
+          class="hn-video-carousel"
+          id="hnVideoCarousel"
+        >
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player1.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player2.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player3.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player4.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player5.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player6.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player7.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player8.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player9.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="hn-player-video-card">
+
+            <video
+              class="hn-player-video"
+              src="player10.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="hn-video-overlay">
+
+              <div class="hn-video-proof">
+                HockeyNative Player
+              </div>
+
+              <div class="hn-video-subtext">
+                Stickhandling training
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <button
+          class="hn-video-arrow hn-video-arrow-right"
+          id="hnVideoRight"
+          type="button"
+          aria-label="Next videos"
+        >
+          ›
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+
+(function () {
+
+  const carousel =
+    document.getElementById(
+      "hnVideoCarousel"
+    );
+
+  const leftButton =
+    document.getElementById(
+      "hnVideoLeft"
+    );
+
+  const rightButton =
+    document.getElementById(
+      "hnVideoRight"
+    );
+
+  const videos =
+    document.querySelectorAll(
+      ".hn-player-video, .hn-featured-video"
+    );
+
+
+  if (!carousel) {
+    return;
+  }
+
+
+  /* =====================================================
+     ARROW SCROLLING
+     ===================================================== */
+
+  function getScrollAmount() {
+
+    const firstCard =
+      carousel.querySelector(
+        ".hn-player-video-card"
+      );
+
+    if (!firstCard) {
+      return 500;
+    }
+
+    return (
+      firstCard.offsetWidth +
+      14
+    ) * 2;
+
+  }
+
+
+  if (leftButton) {
+
+    leftButton.addEventListener(
+      "click",
+      () => {
+
+        carousel.scrollBy({
+          left:
+            -getScrollAmount(),
+
+          behavior:
+            "smooth"
+        });
+
+      }
+    );
+
+  }
+
+
+  if (rightButton) {
+
+    rightButton.addEventListener(
+      "click",
+      () => {
+
+        carousel.scrollBy({
+          left:
+            getScrollAmount(),
+
+          behavior:
+            "smooth"
+        });
+
+      }
+    );
+
+  }
+
+
+  /* =====================================================
+     PLAY VIDEOS ONLY WHEN THEY ARE VISIBLE
+     ===================================================== */
+
+  const videoObserver =
+    new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(
+          entry => {
+
+            const video =
+              entry.target;
+
+            if (
+              entry.isIntersecting &&
+              entry.intersectionRatio > 0.50
+            ) {
+
+              video
+                .play()
+                .catch(() => {});
+
+            } else {
+
+              video.pause();
+
+            }
+
+          }
+        );
+
+      },
+
+      {
+        threshold: [
+          0,
+          0.50,
+          1
+        ]
+      }
+
+    );
+
+
+  videos.forEach(
+    video => {
+
+      videoObserver.observe(
+        video
+      );
+
+    }
+  );
+
+
+  /* =====================================================
+     CLICK VIDEO TO MUTE / UNMUTE
+     ===================================================== */
+
+  videos.forEach(
+    video => {
+
+      video.addEventListener(
+        "click",
+        () => {
+
+          video.muted =
+            !video.muted;
+
+        }
+      );
+
+    }
+  );
+
+
+})();
+
+</script>
+
+
     <!-- =====================================================
      HOW HOCKEYNATIVE WORKS
      ===================================================== -->
@@ -3298,1096 +4389,7 @@ background-repeat: no-repeat;
 
 </script>
 
-    <!-- =====================================================
-     REAL PLAYERS / SOCIAL PROOF VIDEOS
-     ===================================================== -->
-
-<style>
-
-  .hn-player-section {
-    position: relative;
-    width: 100vw;
-
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-
-    padding: 72px 42px 78px;
-
-    background:
-      linear-gradient(
-        180deg,
-        #061221 0%,
-        #081a2e 100%
-      );
-
-    border-top:
-      1px solid
-      rgba(255, 255, 255, 0.08);
-
-    overflow: hidden;
-  }
-
-  .hn-player-inner {
-    width: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-  }
-
-  .hn-player-eyebrow {
-    margin-bottom: 12px;
-
-    color: #93c5fd;
-
-    text-transform: uppercase;
-
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 0.14em;
-
-    text-align: center;
-  }
-
-  .hn-player-heading {
-    margin:
-      0
-      auto
-      12px;
-
-    color: white;
-
-    font-size:
-      clamp(
-        36px,
-        4vw,
-        54px
-      );
-
-    font-weight: 850;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-
-    text-align: center;
-  }
-
-  .hn-player-description {
-    max-width: 680px;
-
-    margin:
-      0
-      auto
-      38px;
-
-    color:
-      rgba(
-        255,
-        255,
-        255,
-        0.68
-      );
-
-    font-size: 17px;
-    line-height: 1.55;
-
-    text-align: center;
-  }
-
-
-  /* =====================================================
-     FEATURED + PLAYER VIDEO LAYOUT
-     ===================================================== */
-
-  .hn-video-showcase {
-    display: grid;
-
-    grid-template-columns:
-      360px
-      minmax(0, 1fr);
-
-    gap: 18px;
-
-    align-items: stretch;
-
-    width: 100%;
-    max-width: 1320px;
-
-    height: 640px;
-
-    margin: 0 auto;
-  }
-
-
-  /* =====================================================
-     FEATURED VIDEO
-     360 x 640 = EXACT 9:16
-     ===================================================== */
-
-  .hn-featured-video-wrap {
-    width: 100%;
-    height: 100%;
-
-    margin: 0;
-  }
-
-  .hn-featured-video-card {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    border:
-      1px solid
-      rgba(255, 255, 255, 0.16);
-
-    border-radius: 24px;
-
-    background: #000;
-
-    box-shadow:
-      0 24px 55px
-      rgba(0, 0, 0, 0.38);
-  }
-
-  .hn-featured-video {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-
-    background: #000;
-  }
-
-  .hn-featured-video-overlay {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    padding:
-      90px
-      20px
-      20px;
-
-    background:
-      linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.88)
-      );
-
-    pointer-events: none;
-  }
-
-  .hn-featured-badge {
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    padding:
-      6px
-      10px;
-
-    border:
-      1px solid
-      rgba(147, 197, 253, 0.45);
-
-    border-radius: 999px;
-
-    color: #dbeafe;
-
-    background:
-      rgba(37, 99, 235, 0.26);
-
-    font-size: 11px;
-    font-weight: 900;
-
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .hn-featured-title {
-    color: white;
-
-    font-size: 22px;
-    font-weight: 900;
-    line-height: 1.1;
-  }
-
-  .hn-featured-subtitle {
-    margin-top: 5px;
-
-    color:
-      rgba(255, 255, 255, 0.72);
-
-    font-size: 14px;
-  }
-
-
-  /* =====================================================
-     10 SMALLER VIDEOS — 5 ACROSS, 2 ROWS
-     ===================================================== */
-
-  .hn-video-carousel-wrap {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    min-width: 0;
-  }
-
-  .hn-video-carousel {
-    display: grid;
-
-    grid-template-columns:
-      repeat(
-        5,
-        minmax(0, 1fr)
-      );
-
-    grid-template-rows:
-      repeat(
-        2,
-        minmax(0, 1fr)
-      );
-
-    gap: 12px;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    padding: 0;
-  }
-
-  .hn-player-video-card {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    min-width: 0;
-    min-height: 0;
-
-    overflow: hidden;
-
-    border:
-      1px solid
-      rgba(
-        255,
-        255,
-        255,
-        0.13
-      );
-
-    border-radius: 18px;
-
-    background: #020617;
-
-    box-shadow:
-      0 12px 28px
-      rgba(
-        0,
-        0,
-        0,
-        0.28
-      );
-  }
-
-  .hn-player-video {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-
-    background: #000;
-  }
-
-  .hn-video-overlay {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    padding:
-      44px
-      12px
-      12px;
-
-    background:
-      linear-gradient(
-        transparent,
-        rgba(
-          0,
-          0,
-          0,
-          0.82
-        )
-      );
-
-    pointer-events: none;
-  }
-
-  .hn-video-proof {
-    color: white;
-
-    font-size: 13px;
-    font-weight: 800;
-
-    line-height: 1.15;
-  }
-
-  .hn-video-subtext {
-    margin-top: 3px;
-
-    color:
-      rgba(
-        255,
-        255,
-        255,
-        0.68
-      );
-
-    font-size: 11px;
-  }
-
-
-  /* =====================================================
-     ARROWS
-     Desktop grid shows all 10, so arrows are hidden.
-     ===================================================== */
-
-  .hn-video-arrow {
-    display: none;
-  }
-
-
-  /* =====================================================
-     TABLET
-     ===================================================== */
-
-  @media (max-width: 900px) {
-
-    .hn-player-section {
-      padding:
-        58px
-        22px
-        64px;
-    }
-
-    .hn-video-showcase {
-      display: block;
-      height: auto;
-    }
-
-    .hn-featured-video-wrap {
-      width: 100%;
-      height: auto;
-
-      margin-bottom: 26px;
-    }
-
-    .hn-featured-video-card {
-      width: min(100%, 360px);
-      height: auto;
-
-      aspect-ratio: 9 / 16;
-
-      margin: 0 auto;
-    }
-
-    .hn-video-carousel-wrap {
-      height: auto;
-    }
-
-    .hn-video-carousel {
-      display: flex;
-
-      height: auto;
-
-      gap: 14px;
-
-      overflow-x: auto;
-
-      padding:
-        2px
-        2px
-        12px;
-
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-
-      scrollbar-width: none;
-    }
-
-    .hn-video-carousel::-webkit-scrollbar {
-      display: none;
-    }
-
-    .hn-player-video-card {
-      flex:
-        0
-        0
-        210px;
-
-      width: 210px;
-      height: auto;
-
-      aspect-ratio: 9 / 16;
-
-      scroll-snap-align: start;
-    }
-
-  }
-
-
-  /* =====================================================
-     PHONE
-     ===================================================== */
-
-  @media (max-width: 650px) {
-
-    .hn-player-section {
-      padding:
-        50px
-        14px
-        58px;
-    }
-
-    .hn-player-heading {
-      font-size: 34px;
-    }
-
-    .hn-player-description {
-      margin-bottom: 28px;
-
-      font-size: 15px;
-    }
-
-    .hn-video-showcase {
-      display: block;
-      height: auto;
-    }
-
-    .hn-featured-video-wrap {
-      width: 100%;
-      height: auto;
-
-      margin-bottom: 22px;
-    }
-
-    .hn-featured-video-card {
-      width: min(100%, 320px);
-      height: auto;
-
-      aspect-ratio: 9 / 16;
-
-      margin: 0 auto;
-    }
-
-    .hn-video-carousel-wrap {
-      height: auto;
-    }
-
-    .hn-video-carousel {
-      display: flex;
-
-      height: auto;
-
-      gap: 12px;
-
-      overflow-x: auto;
-
-      padding-bottom: 12px;
-
-      scroll-snap-type: x mandatory;
-
-      scrollbar-width: none;
-    }
-
-    .hn-video-carousel::-webkit-scrollbar {
-      display: none;
-    }
-
-    .hn-player-video-card {
-      flex:
-        0
-        0
-        68vw;
-
-      width: auto;
-      height: auto;
-
-      max-width: 270px;
-
-      aspect-ratio: 9 / 16;
-
-      scroll-snap-align: start;
-    }
-
-    .hn-video-proof {
-      font-size: 14px;
-    }
-
-    .hn-video-subtext {
-      font-size: 12px;
-    }
-
-  }
-
-</style>
-
-
-<section
-  class="hn-player-section"
-  id="realPlayers"
->
-
-  <div class="hn-player-inner">
-
-    <div class="hn-player-eyebrow">
-      Real Players. Real Training.
-    </div>
-
-    <h2 class="hn-player-heading">
-      See the app in action.
-    </h2>
-
-    <p class="hn-player-description">
-      Players around the world are using HockeyNative to train,
-      compete and improve their stickhandling.
-    </p>
-
-
-    <div class="hn-video-showcase">
-
-
-      <!-- =================================================
-           FEATURED VIDEO
-           ================================================= -->
-
-      <div class="hn-featured-video-wrap">
-
-        <div class="hn-featured-video-card">
-
-          <video
-            class="hn-featured-video"
-            src="main.mp4"
-            muted
-            loop
-            playsinline
-            autoplay
-            preload="metadata"
-          ></video>
-
-          <div class="hn-featured-video-overlay">
-
-            <div class="hn-featured-badge">
-              Featured
-            </div>
-
-            <div class="hn-featured-title">
-              HockeyNative in Action
-            </div>
-
-            <div class="hn-featured-subtitle">
-              Real player. Real training.
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- =================================================
-           10 PLAYER VIDEOS
-           ================================================= -->
-
-      <div class="hn-video-carousel-wrap">
-
-        <button
-          class="hn-video-arrow hn-video-arrow-left"
-          id="hnVideoLeft"
-          type="button"
-          aria-label="Previous videos"
-        >
-          ‹
-        </button>
-
-
-        <div
-          class="hn-video-carousel"
-          id="hnVideoCarousel"
-        >
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player1.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player2.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player3.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player4.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player5.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player6.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player7.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player8.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player9.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="hn-player-video-card">
-
-            <video
-              class="hn-player-video"
-              src="player10.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-
-            <div class="hn-video-overlay">
-
-              <div class="hn-video-proof">
-                HockeyNative Player
-              </div>
-
-              <div class="hn-video-subtext">
-                Stickhandling training
-              </div>
-
-            </div>
-
-          </div>
-
-
-        </div>
-
-
-        <button
-          class="hn-video-arrow hn-video-arrow-right"
-          id="hnVideoRight"
-          type="button"
-          aria-label="Next videos"
-        >
-          ›
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<script>
-
-(function () {
-
-  const carousel =
-    document.getElementById(
-      "hnVideoCarousel"
-    );
-
-  const leftButton =
-    document.getElementById(
-      "hnVideoLeft"
-    );
-
-  const rightButton =
-    document.getElementById(
-      "hnVideoRight"
-    );
-
-  const videos =
-    document.querySelectorAll(
-      ".hn-player-video, .hn-featured-video"
-    );
-
-
-  if (!carousel) {
-    return;
-  }
-
-
-  /* =====================================================
-     ARROW SCROLLING
-     ===================================================== */
-
-  function getScrollAmount() {
-
-    const firstCard =
-      carousel.querySelector(
-        ".hn-player-video-card"
-      );
-
-    if (!firstCard) {
-      return 500;
-    }
-
-    return (
-      firstCard.offsetWidth +
-      14
-    ) * 2;
-
-  }
-
-
-  if (leftButton) {
-
-    leftButton.addEventListener(
-      "click",
-      () => {
-
-        carousel.scrollBy({
-          left:
-            -getScrollAmount(),
-
-          behavior:
-            "smooth"
-        });
-
-      }
-    );
-
-  }
-
-
-  if (rightButton) {
-
-    rightButton.addEventListener(
-      "click",
-      () => {
-
-        carousel.scrollBy({
-          left:
-            getScrollAmount(),
-
-          behavior:
-            "smooth"
-        });
-
-      }
-    );
-
-  }
-
-
-  /* =====================================================
-     PLAY VIDEOS ONLY WHEN THEY ARE VISIBLE
-     ===================================================== */
-
-  const videoObserver =
-    new IntersectionObserver(
-
-      entries => {
-
-        entries.forEach(
-          entry => {
-
-            const video =
-              entry.target;
-
-            if (
-              entry.isIntersecting &&
-              entry.intersectionRatio > 0.50
-            ) {
-
-              video
-                .play()
-                .catch(() => {});
-
-            } else {
-
-              video.pause();
-
-            }
-
-          }
-        );
-
-      },
-
-      {
-        threshold: [
-          0,
-          0.50,
-          1
-        ]
-      }
-
-    );
-
-
-  videos.forEach(
-    video => {
-
-      videoObserver.observe(
-        video
-      );
-
-    }
-  );
-
-
-  /* =====================================================
-     CLICK VIDEO TO MUTE / UNMUTE
-     ===================================================== */
-
-  videos.forEach(
-    video => {
-
-      video.addEventListener(
-        "click",
-        () => {
-
-          video.muted =
-            !video.muted;
-
-        }
-      );
-
-    }
-  );
-
-
-})();
-
-</script>
-
+   
 
 <footer class="footer">
 
