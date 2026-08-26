@@ -3086,7 +3086,121 @@ background-repeat: no-repeat;
     text-align: center;
   }
 
+  /* =====================================================
+     FEATURED VIDEO
+     ===================================================== */
 
+  .hn-featured-video-wrap {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    margin:
+      0
+      auto
+      34px;
+  }
+
+  .hn-featured-video-card {
+    position: relative;
+
+    width: min(100%, 420px);
+
+    aspect-ratio: 9 / 16;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.16);
+
+    border-radius: 24px;
+
+    background: #000;
+
+    box-shadow:
+      0 24px 55px
+      rgba(0, 0, 0, 0.38);
+  }
+
+  .hn-featured-video {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+  }
+
+  .hn-featured-video-overlay {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding:
+      90px
+      20px
+      20px;
+
+    background:
+      linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.88)
+      );
+
+    pointer-events: none;
+  }
+
+  .hn-featured-badge {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    padding:
+      6px
+      10px;
+
+    border:
+      1px solid
+      rgba(147, 197, 253, 0.45);
+
+    border-radius: 999px;
+
+    color: #dbeafe;
+
+    background:
+      rgba(37, 99, 235, 0.26);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+  }
+
+  .hn-featured-title {
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    line-height: 1.1;
+  }
+
+  .hn-featured-subtitle {
+    margin-top: 5px;
+
+    color:
+      rgba(255, 255, 255, 0.72);
+
+    font-size: 14px;
+  }
   /* =====================================================
      VIDEO CAROUSEL
      ===================================================== */
@@ -3338,6 +3452,10 @@ background-repeat: no-repeat;
       display: none;
     }
 
+     .hn-featured-video-card {
+    width: min(100%, 300px);
+  }
+
   }
 
 </style>
@@ -3363,7 +3481,40 @@ background-repeat: no-repeat;
       compete and improve their stickhandling.
     </p>
 
+<div class="hn-featured-video-wrap">
 
+  <div class="hn-featured-video-card">
+
+    <video
+      class="hn-featured-video"
+      src="main.mp4"
+      muted
+      loop
+      playsinline
+      autoplay
+      preload="metadata"
+    ></video>
+
+    <div class="hn-featured-video-overlay">
+
+      <div class="hn-featured-badge">
+        Featured
+      </div>
+
+      <div class="hn-featured-title">
+        HockeyNative in Action
+      </div>
+
+      <div class="hn-featured-subtitle">
+        Real player. Real training.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+    
     <div class="hn-video-carousel-wrap">
 
       <button
