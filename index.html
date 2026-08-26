@@ -603,6 +603,27 @@
       background: var(--input);
     }
 
+    .btn-compete {
+  border: 0;
+
+  color: #071a2e;
+  background: white;
+
+  font-weight: 900;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.btn-compete:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 24px
+    rgba(0, 0, 0, 0.28);
+}
+
     .phone-card {
       display: flex;
       align-items: center;
@@ -1278,68 +1299,7 @@
   </div>
 </header>
 
-  <!-- =====================================================
-       STICKHANDLING CHALLENGE
-       ===================================================== -->
-
-  <section
-    class="challenge-hero"
-    id="challenge"
-  >
-    <div class="challenge-container">
-      <div class="challenge-layout">
-
-        <div class="challenge-copy">
-
-          <h1>
-            Register Now for Group
-            <span>Stickhandling Challenge</span>
-          </h1>
-
-          <button
-            class="challenge-cta"
-            id="openRegistrationButton"
-            type="button"
-          >
-            Click to Register, It’s Free!
-          </button>
-
-          <p class="challenge-dates">
-            Competition
-            <strong id="challengeStartDate">
-              STARTS
-            </strong>
-            and
-            <strong id="challengeEndDate">
-              ENDS
-            </strong>
-          </p>
-
-          <div class="challenge-points">
-
-            <div class="challenge-point">
-              Free to Enter
-            </div>
-
-            <div class="challenge-point">
-              Live Leaderboard
-            </div>
-
-            <div class="challenge-point">
-              Player Awards Given
-            </div>
-
-            <div class="challenge-point">
-              Free App Access
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
+  
   <!-- =====================================================
        REGISTRATION MODAL
        ===================================================== -->
@@ -1544,26 +1504,36 @@
 
         <div class="buttons">
 
-          <a
-            href="https://apps.apple.com/gb/app/hockeynative/id6763365735"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-              alt="Download on the App Store"
-              style="height: 50px;"
-            />
-          </a>
+<div class="buttons">
 
-          <a
-            class="btn btn-secondary"
-            href="/privacy"
-          >
-            Privacy Policy
-          </a>
+  <a
+    href="https://apps.apple.com/gb/app/hockeynative/id6763365735"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+      alt="Download on the App Store"
+      style="height: 50px;"
+    />
+  </a>
 
-        </div>
+  <a
+    class="btn btn-secondary"
+    href="/privacy"
+  >
+    Privacy Policy
+  </a>
+
+  <button
+    class="btn btn-compete"
+    id="openRegistrationButton"
+    type="button"
+  >
+    Compete
+  </button>
+
+</div>
       </div>
 
       <div class="phone-card">
