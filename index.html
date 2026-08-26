@@ -698,6 +698,59 @@
       line-height: 1.5;
     }
 
+        .global-section {
+      margin-top: 42px;
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: rgba(11, 18, 32, 0.88);
+      box-shadow:
+        0 0 40px
+        rgba(0, 0, 0, 0.28);
+      text-align: center;
+    }
+
+    .global-section h2 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      letter-spacing: -0.03em;
+    }
+
+    .global-section p {
+      max-width: 650px;
+      margin: 0 auto 26px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .country-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .country-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 58px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 14px;
+      background: rgba(17, 24, 39, 0.72);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .country-flag {
+      font-size: 25px;
+      line-height: 1;
+    }
+
     .footer {
       display: flex;
       justify-content: space-between;
@@ -878,6 +931,13 @@
 
       .features {
         grid-template-columns: 1fr;
+      }
+            .country-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .global-section {
+        padding: 28px 18px;
       }
     }
 
@@ -1318,6 +1378,75 @@
         </div>
 
       </div>
+    </section>
+
+        <!-- =====================================================
+         HOCKEYNATIVE AROUND THE WORLD
+         ===================================================== -->
+
+    <section class="global-section">
+
+      <div class="eyebrow">
+        HockeyNative Worldwide
+      </div>
+
+      <h2>
+        Used by hockey players around the world.
+      </h2>
+
+      <p>
+        HockeyNative is helping players train, compete, and improve across the globe.
+      </p>
+
+      <div class="country-grid">
+
+        <div class="country-card">
+          <span class="country-flag">🇺🇸</span>
+          United States
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇨🇦</span>
+          Canada
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇯🇵</span>
+          Japan
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇬🇧</span>
+          United Kingdom
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇩🇰</span>
+          Denmark
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇸🇪</span>
+          Sweden
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇿🇦</span>
+          South Africa
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇸🇰</span>
+          Slovakia
+        </div>
+
+        <div class="country-card">
+          <span class="country-flag">🇰🇷</span>
+          Republic of Korea
+        </div>
+
+      </div>
+
     </section>
 
     <footer class="footer">
