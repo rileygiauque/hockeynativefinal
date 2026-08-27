@@ -615,14 +615,20 @@
 .hero-card {
   position: relative;
   z-index: 1;
+
   width: 100%;
   max-width: 1320px;
+
   margin: 0 auto;
   padding: 18px 0;
+
   border: 0;
   border-radius: 0;
+
   background: transparent;
   box-shadow: none;
+
+  text-align: center;
 }
 
 
@@ -635,28 +641,44 @@
       letter-spacing: 0.12em;
     }
 
-    .app-title {
-      margin: 0 0 18px;
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-    }
+.app-title {
+  margin: 0 auto 18px;
 
-    .lead {
-      max-width: 760px;
-      margin-bottom: 30px;
-      color: rgba(255,255,255,0.84);
-      font-size: 21px;
-      line-height: 1.55;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.55);
-    }
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
 
-    .buttons {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+  text-align: center;
+}
+
+.lead {
+  max-width: 900px;
+
+  margin:
+    0
+    auto
+    30px;
+
+  color: rgba(255,255,255,0.84);
+
+  font-size: 21px;
+  line-height: 1.55;
+
+  text-align: center;
+
+  text-shadow:
+    0 2px 8px
+    rgba(0,0,0,0.55);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
 
     .btn {
@@ -1150,11 +1172,11 @@
     gap: 32px;
   }
 
-  .challenge-header-logo {
-    width: 500px;
-    max-width: 48%;
-    height: auto;
-  }
+.challenge-header-logo {
+  width: 600px;
+  max-width: 52%;
+  height: auto;
+}
 
   .challenge-store-buttons {
     display: flex;
@@ -1278,8 +1300,8 @@
 }
 
 .challenge-header-logo {
-  width: 145px;
-  max-width: 38%;
+  width: 175px;
+  max-width: 42%;
   flex-shrink: 0;
 }
 
