@@ -2943,28 +2943,70 @@ document
 
 <style>
 
-  .hn-how-section {
-    width: 100vw;
+.hn-how-section {
+  position: relative;
+  overflow: hidden;
 
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+  width: 100vw;
 
-    padding: 70px 42px;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 
-background:
-  linear-gradient(
-    135deg,
-    #123f68 0%,
-    #0b2c4a 44%,
-    #06172b 100%
-  );
+  padding: 70px 42px;
 
-border-top: none;
+  background:
+    linear-gradient(
+      135deg,
+      #123f68 0%,
+      #0b2c4a 44%,
+      #06172b 100%
+    );
 
-border-bottom:
-  1px solid
-  rgba(255, 255, 255, 0.07);
-  }
+  border-top: none;
+  border-bottom: none;
+}
+
+  .hn-how-section::before,
+.hn-how-section::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  height: 130px;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+.hn-how-section::before {
+  top: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #081a2e 0%,
+      rgba(8, 26, 46, 0.72) 28%,
+      rgba(8, 26, 46, 0.28) 58%,
+      rgba(8, 26, 46, 0) 100%
+    );
+}
+
+.hn-how-section::after {
+  bottom: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(7, 24, 43, 0) 0%,
+      rgba(7, 24, 43, 0.28) 42%,
+      rgba(7, 24, 43, 0.72) 72%,
+      #07182b 100%
+    );
+}
 
   .hn-how-inner {
     width: 100%;
@@ -3245,7 +3287,7 @@ border-bottom:
     </div>
 
     <h2 class="hn-how-title">
-      Here’s all you need.
+      Here’s all you need to get started.
     </h2>
 
 
