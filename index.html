@@ -1350,7 +1350,7 @@
     22px
     18px;
 
-  scroll-snap-align: center;
+scroll-snap-align: start;
 }
 
 .hn-how-item-image {
@@ -3330,12 +3330,28 @@ document
     { passive: true }
   );
 
-  window.addEventListener(
-    "resize",
-    updateHowDots
-  );
+window.addEventListener(
+  "resize",
+  updateHowDots
+);
+
+function resetHowCarouselStart() {
+  if (window.innerWidth <= 650) {
+    carousel.scrollLeft = 0;
+  }
 
   updateHowDots();
+}
+
+window.addEventListener(
+  "load",
+  resetHowCarouselStart
+);
+
+setTimeout(
+  resetHowCarouselStart,
+  0
+);
 })();
 </script>
 
