@@ -3335,70 +3335,93 @@ window.addEventListener(
   updateHowDots
 );
 
-let howCarouselHasOpened = false;
 
-function forceHowCarouselToPhone() {
+let howCarouselUserHasSwiped = false;
+
+function keepHowCarouselOnPhone() {
   if (
     window.innerWidth > 650 ||
-    howCarouselHasOpened
+    howCarouselUserHasSwiped
   ) {
     return;
   }
 
-  howCarouselHasOpened = true;
-
-  const originalSnap =
-    carousel.style.scrollSnapType;
-
-  carousel.style.scrollSnapType = "none";
-
   carousel.scrollLeft = 0;
 
-  requestAnimationFrame(() => {
-    carousel.scrollLeft = 0;
-
-    requestAnimationFrame(() => {
-      carousel.scrollLeft = 0;
-
-      carousel.style.scrollSnapType =
-        originalSnap;
-
-      dots.forEach((dot, index) => {
-        dot.classList.toggle(
-          "active",
-          index === 0
-        );
-      });
-    });
+  dots.forEach((dot, index) => {
+    dot.classList.toggle(
+      "active",
+      index === 0
+    );
   });
 }
 
-const howSection =
-  document.querySelector(
-    ".hn-how-section"
-  );
+/* Keep phone as the starting card */
+keepHowCarouselOnPhone();
 
-if (howSection) {
-  const howSectionObserver =
-    new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            forceHowCarouselToPhone();
+window.addEventListener(
+  "load",
+  () => {
+    keepHowCarouselOnPhone();
 
-            howSectionObserver.disconnect();
-          }
-        });
-      },
-      {
-        threshold: 0.1
-      }
+    setTimeout(
+      keepHowCarouselOnPhone,
+      100
     );
 
-  howSectionObserver.observe(
-    howSection
-  );
-}
+    setTimeout(
+      keepHowCarouselOnPhone,
+      500
+    );
+
+    setTimeout(
+      keepHowCarouselOnPhone,
+      1000
+    );
+  }
+);
+
+window.addEventListener(
+  "pageshow",
+  () => {
+    keepHowCarouselOnPhone();
+
+    setTimeout(
+      keepHowCarouselOnPhone,
+      250
+    );
+  }
+);
+
+/* Safari may try to restore horizontal position.
+   Do not allow that until the user actually swipes. */
+carousel.addEventListener(
+  "scroll",
+  () => {
+    if (!howCarouselUserHasSwiped) {
+      carousel.scrollLeft = 0;
+    }
+  },
+  { passive: true }
+);
+
+/* The moment the user touches the carousel,
+   let them swipe normally. */
+carousel.addEventListener(
+  "touchstart",
+  () => {
+    howCarouselUserHasSwiped = true;
+  },
+  { passive: true }
+);
+
+carousel.addEventListener(
+  "pointerdown",
+  () => {
+    howCarouselUserHasSwiped = true;
+  },
+  { passive: true }
+);
 })();
 </script>
 
