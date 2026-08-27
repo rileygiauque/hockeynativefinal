@@ -2945,6 +2945,7 @@ document
 
 .hn-how-section {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
 
   width: 100vw;
@@ -2966,7 +2967,7 @@ document
   border-bottom: none;
 }
 
-  .hn-how-section::before,
+.hn-how-section::before,
 .hn-how-section::after {
   content: "";
 
@@ -2977,7 +2978,7 @@ document
 
   height: 130px;
 
-  z-index: 1;
+  z-index: 0;
 
   pointer-events: none;
 }
@@ -3008,12 +3009,15 @@ document
     );
 }
 
-  .hn-how-inner {
-    width: 100%;
-    max-width: 1320px;
+.hn-how-inner {
+  position: relative;
+  z-index: 3;
 
-    margin: 0 auto;
-  }
+  width: 100%;
+  max-width: 1320px;
+
+  margin: 0 auto;
+}
 
   .hn-how-eyebrow {
     margin-bottom: 14px;
