@@ -1359,8 +1359,37 @@
   margin-bottom: 12px;
 }
 
-.hn-how-item-label {
-  font-size: 18px;
+.hn-how-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin:
+    14px
+    auto
+    0;
+}
+
+.hn-how-dots span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  transition:
+    width 0.22s ease,
+    background 0.22s ease;
+}
+
+.hn-how-dots span.active {
+  width: 20px;
+
+  background: #93c5fd;
 }
 
   /* ELITE SECTION: APPLE + GOOGLE ONLY */
@@ -3110,6 +3139,10 @@ padding:
   line-height: 1.2;
 }
 
+  .hn-how-dots {
+  display: none;
+}
+
   @media (max-width: 760px) {
 
     .hn-how-section {
@@ -3209,7 +3242,11 @@ padding:
   </div>
 
 </div>
-
+<div class="hn-how-dots" aria-hidden="true">
+  <span class="active"></span>
+  <span></span>
+  <span></span>
+</div>
       </div>
 
 
@@ -3222,6 +3259,73 @@ padding:
   </div>
 
 </section>
+
+    <script>
+(function () {
+  const carousel =
+    document.querySelector(".hn-how-items");
+
+  const cards =
+    document.querySelectorAll(".hn-how-item");
+
+  const dots =
+    document.querySelectorAll(".hn-how-dots span");
+
+  if (
+    !carousel ||
+    !cards.length ||
+    !dots.length
+  ) {
+    return;
+  }
+
+  function updateHowDots() {
+    const carouselCenter =
+      carousel.scrollLeft +
+      carousel.clientWidth / 2;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    cards.forEach((card, index) => {
+      const cardCenter =
+        card.offsetLeft +
+        card.offsetWidth / 2;
+
+      const distance =
+        Math.abs(
+          carouselCenter -
+          cardCenter
+        );
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    dots.forEach((dot, index) => {
+      dot.classList.toggle(
+        "active",
+        index === closestIndex
+      );
+    });
+  }
+
+  carousel.addEventListener(
+    "scroll",
+    updateHowDots,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "resize",
+    updateHowDots
+  );
+
+  updateHowDots();
+})();
+</script>
 
        <!-- =====================================================
      HOCKEYNATIVE WORLDWIDE
