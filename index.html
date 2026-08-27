@@ -684,6 +684,10 @@
   display: none;
 }
 
+    .hero-google-mobile {
+  display: none;
+}
+
 
     .btn {
       display: inline-flex;
@@ -1306,29 +1310,44 @@
 
     @media (max-width: 650px) {
 
-      .hero-app-store {
-  display: none;
-}
+  /* ELITE SECTION: APPLE + GOOGLE ONLY */
 
-.hero-terms-mobile {
-  display: inline-flex;
-}
+  .hero-app-store {
+    display: block;
+  }
 
-.challenge-header-inner {
-  padding: 7px 14px;
-  gap: 10px;
-}
+  .hero-google-mobile {
+    display: block;
+  }
 
-.challenge-header-logo {
-  width: 175px;
-  max-width: 42%;
-  flex-shrink: 0;
-}
+  .hero-terms-mobile {
+    display: none;
+  }
 
-.challenge-store-buttons {
-  gap: 5px;
-  flex-shrink: 0;
-}
+  .hero-privacy-mobile {
+    display: none;
+  }
+
+
+  /* TOP HEADER: FULL-WIDTH LOGO ONLY */
+
+  .challenge-header-inner {
+    width: 100%;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .challenge-header-logo {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 1;
+  }
+
+  .challenge-store-buttons {
+    display: none;
+  }
 
 .challenge-store-button {
   width: 88px;
@@ -1714,6 +1733,19 @@ padding:
               style="height: 50px;"
             />
           </a>
+
+          <a
+  class="hero-google-mobile"
+  href="YOUR_GOOGLE_PLAY_LINK_HERE"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img
+    src="google-play-badge.png"
+    alt="Get it on Google Play"
+    style="height: 50px;"
+  />
+</a>
 
 <a
   class="btn btn-secondary hero-terms-mobile"
