@@ -680,6 +680,10 @@
   flex-wrap: wrap;
 }
 
+    .hero-terms-mobile {
+  display: none;
+}
+
 
     .btn {
       display: inline-flex;
@@ -1294,6 +1298,14 @@
 
     @media (max-width: 650px) {
 
+      .hero-app-store {
+  display: none;
+}
+
+.hero-terms-mobile {
+  display: inline-flex;
+}
+
 .challenge-header-inner {
   padding: 7px 14px;
   gap: 10px;
@@ -1682,11 +1694,12 @@ padding:
 
         <div class="buttons">
 
-          <a
-            href="https://apps.apple.com/gb/app/hockeynative/id6763365735"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+<a
+  class="hero-app-store"
+  href="https://apps.apple.com/gb/app/hockeynative/id6763365735"
+  target="_blank"
+  rel="noopener noreferrer"
+>
             <img
               src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
               alt="Download on the App Store"
@@ -1694,12 +1707,19 @@ padding:
             />
           </a>
 
-          <a
-            class="btn btn-secondary"
-            href="/privacy"
-          >
-            Privacy Policy
-          </a>
+<a
+  class="btn btn-secondary hero-terms-mobile"
+  href="/terms"
+>
+  Terms
+</a>
+
+<a
+  class="btn btn-secondary"
+  href="/privacy"
+>
+  Privacy Policy
+</a>
 
         </div>
 
