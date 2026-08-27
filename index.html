@@ -1311,13 +1311,46 @@
 
     @media (max-width: 650px) {
 
-      .hn-how-items {
-  grid-template-columns: 1fr;
+.hn-how-items {
+  display: flex;
+
   gap: 14px;
+
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  padding:
+    0
+    18px
+    12px;
+
+  margin-left: -18px;
+  margin-right: -18px;
+
+  scrollbar-width: none;
+}
+
+.hn-how-items::-webkit-scrollbar {
+  display: none;
 }
 
 .hn-how-item {
-  padding: 18px 16px;
+  flex: 0 0 82vw;
+
+  max-width: 340px;
+
+  min-height: 300px;
+
+  padding:
+    22px
+    18px;
+
+  scroll-snap-align: center;
 }
 
 .hn-how-item-image {
