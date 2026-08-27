@@ -3335,23 +3335,70 @@ window.addEventListener(
   updateHowDots
 );
 
-function resetHowCarouselStart() {
-  if (window.innerWidth <= 650) {
-    carousel.scrollLeft = 0;
+let howCarouselHasOpened = false;
+
+function forceHowCarouselToPhone() {
+  if (
+    window.innerWidth > 650 ||
+    howCarouselHasOpened
+  ) {
+    return;
   }
 
-  updateHowDots();
+  howCarouselHasOpened = true;
+
+  const originalSnap =
+    carousel.style.scrollSnapType;
+
+  carousel.style.scrollSnapType = "none";
+
+  carousel.scrollLeft = 0;
+
+  requestAnimationFrame(() => {
+    carousel.scrollLeft = 0;
+
+    requestAnimationFrame(() => {
+      carousel.scrollLeft = 0;
+
+      carousel.style.scrollSnapType =
+        originalSnap;
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle(
+          "active",
+          index === 0
+        );
+      });
+    });
+  });
 }
 
-window.addEventListener(
-  "load",
-  resetHowCarouselStart
-);
+const howSection =
+  document.querySelector(
+    ".hn-how-section"
+  );
 
-setTimeout(
-  resetHowCarouselStart,
-  0
-);
+if (howSection) {
+  const howSectionObserver =
+    new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            forceHowCarouselToPhone();
+
+            howSectionObserver.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+  howSectionObserver.observe(
+    howSection
+  );
+}
 })();
 </script>
 
