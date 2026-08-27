@@ -2773,6 +2773,32 @@ padding:
       ".hn-player-video, .hn-featured-video"
     );
 
+  const featuredVideo =
+  document.querySelector(
+    ".hn-featured-video"
+  );
+
+if (featuredVideo) {
+  featuredVideo.muted = true;
+  featuredVideo.defaultMuted = true;
+
+  const startFeaturedVideo = () => {
+    featuredVideo
+      .play()
+      .catch(() => {});
+  };
+
+  if (featuredVideo.readyState >= 2) {
+    startFeaturedVideo();
+  } else {
+    featuredVideo.addEventListener(
+      "canplay",
+      startFeaturedVideo,
+      { once: true }
+    );
+  }
+}
+
 
   if (!carousel) {
     return;
@@ -2888,7 +2914,9 @@ padding:
     );
 
 
-  videos.forEach(
+document
+  .querySelectorAll(".hn-player-video")
+  .forEach(
     video => {
 
       videoObserver.observe(
@@ -2899,25 +2927,7 @@ padding:
   );
 
 
-  /* =====================================================
-     CLICK VIDEO TO MUTE / UNMUTE
-     ===================================================== */
 
-  videos.forEach(
-    video => {
-
-      video.addEventListener(
-        "click",
-        () => {
-
-          video.muted =
-            !video.muted;
-
-        }
-      );
-
-    }
-  );
 
 
 })();
