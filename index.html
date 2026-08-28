@@ -3731,9 +3731,7 @@ carousel.addEventListener(
 
 border-top: none;
 
-    border-bottom:
-      1px solid
-      rgba(147, 197, 253, 0.18);
+border-bottom: none;
 
 background:
   linear-gradient(
@@ -3748,6 +3746,31 @@ background-position: center;
 background-repeat: no-repeat;
   }
 
+.hn-world-section::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 220px;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(3, 7, 18, 0) 0%,
+      rgba(3, 7, 18, 0.18) 30%,
+      rgba(3, 7, 18, 0.48) 58%,
+      rgba(3, 7, 18, 0.78) 82%,
+      #030712 100%
+    );
+
+  z-index: 1;
+}
 
   /* =====================================================
      INNER CONTENT WIDTH
