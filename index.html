@@ -3482,7 +3482,48 @@ document
 
 </section>
 
-    <script>
+<script>
+(function () {
+  const playerSection =
+    document.getElementById("realPlayers");
+
+  const howSection =
+    document.querySelector(".hn-how-section");
+
+  if (!playerSection || !howSection) {
+    return;
+  }
+
+  const originalParent =
+    playerSection.parentNode;
+
+  const originalNextSibling =
+    playerSection.nextSibling;
+
+  function positionPlayerSection() {
+    if (window.innerWidth <= 650) {
+      howSection.insertAdjacentElement(
+        "afterend",
+        playerSection
+      );
+    } else {
+      originalParent.insertBefore(
+        playerSection,
+        originalNextSibling
+      );
+    }
+  }
+
+  positionPlayerSection();
+
+  window.addEventListener(
+    "resize",
+    positionPlayerSection
+  );
+})();
+</script>
+
+<script>
 (function () {
   const carousel =
     document.querySelector(".hn-how-items");
