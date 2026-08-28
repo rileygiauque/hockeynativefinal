@@ -2441,13 +2441,13 @@ min-height: 0;
       height: auto;
     }
 
-    .hn-featured-video-wrap {
-      width: 100%;
-      height: auto;
+.hn-featured-video-wrap {
+  width: 100%;
+  height: auto;
 
-      margin-bottom: 22px;
-    }
-
+  margin-bottom: 0;
+}
+    
     .hn-featured-video-card {
       width: min(100%, 320px);
       height: auto;
@@ -3370,11 +3370,36 @@ document
 
   @media (max-width: 760px) {
 
-    .hn-how-section {
-      padding:
-        52px
-        18px;
-    }
+.hn-how-section::before {
+  height: 260px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #081a2e 0%,
+      rgba(8, 26, 46, 0.92) 18%,
+      rgba(8, 26, 46, 0.68) 42%,
+      rgba(8, 26, 46, 0.34) 68%,
+      rgba(8, 26, 46, 0) 100%
+    );
+}
+    
+.hn-how-section {
+  padding:
+    72px
+    18px
+    52px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #081a2e 0%,
+      #0a2743 22%,
+      #0f365a 48%,
+      #123f68 72%,
+      #0b2c4a 100%
+    );
+}
 
     .hn-how-title {
       margin-bottom: 30px;
