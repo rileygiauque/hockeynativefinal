@@ -1947,6 +1947,28 @@ padding:
      FEATURED + PLAYER VIDEO LAYOUT
      ===================================================== */
 
+  .hn-video-column-title {
+  flex: 0 0 auto;
+
+  min-height: 54px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+
+  letter-spacing: -0.025em;
+
+  text-align: center;
+}
+  
   .hn-video-showcase {
     display: grid;
 
@@ -1972,18 +1994,23 @@ padding:
      360 x 640 = EXACT 9:16
      ===================================================== */
 
-  .hn-featured-video-wrap {
-    width: 100%;
-    height: 100%;
+.hn-featured-video-wrap {
+  display: flex;
+  flex-direction: column;
 
-    margin: 0;
-  }
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+}
 
   .hn-featured-video-card {
     position: relative;
 
-    width: 100%;
-    height: 100%;
+width: 100%;
+
+flex: 1;
+min-height: 0;
 
     overflow: hidden;
 
@@ -2082,14 +2109,17 @@ padding:
      10 SMALLER VIDEOS — 5 ACROSS, 2 ROWS
      ===================================================== */
 
-  .hn-video-carousel-wrap {
-    position: relative;
+.hn-video-carousel-wrap {
+  position: relative;
 
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
 
-    min-width: 0;
-  }
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+}
 
   .hn-video-carousel {
     display: grid;
@@ -2108,8 +2138,10 @@ padding:
 
     gap: 12px;
 
-    width: 100%;
-    height: 100%;
+width: 100%;
+
+flex: 1;
+min-height: 0;
 
     overflow: hidden;
 
@@ -2413,9 +2445,13 @@ padding:
            FEATURED VIDEO
            ================================================= -->
 
-      <div class="hn-featured-video-wrap">
+<div class="hn-featured-video-wrap">
 
-        <div class="hn-featured-video-card">
+  <div class="hn-video-column-title">
+    Enter the Start Zone, Wait for the Countdown, Compete to Win
+  </div>
+
+  <div class="hn-featured-video-card">
 
           <video
             class="hn-featured-video"
@@ -2452,10 +2488,14 @@ padding:
            10 PLAYER VIDEOS
            ================================================= -->
 
-      <div class="hn-video-carousel-wrap">
+<div class="hn-video-carousel-wrap">
 
-        <button
-          class="hn-video-arrow hn-video-arrow-left"
+  <div class="hn-video-column-title">
+    Each attempt is recorded and timed in the app.
+  </div>
+
+  <button
+    class="hn-video-arrow hn-video-arrow-left"
           id="hnVideoLeft"
           type="button"
           aria-label="Previous videos"
