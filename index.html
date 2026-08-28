@@ -2047,6 +2047,8 @@ padding:
 
   @media (min-width: 901px) {
 
+    
+
   .hn-video-showcase {
     position: relative;
 
@@ -2081,6 +2083,49 @@ padding:
   .hn-video-column-title-static {
     display: none;
   }
+
+    .hn-player-video-card::after {
+  content: "Each attempt is recorded\Aand timed in the app.";
+
+  white-space: pre-line;
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    rgba(30, 41, 59, 0.68);
+
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  color: white;
+
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.25;
+
+  text-align: center;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  opacity: 1;
+
+  transition:
+    opacity 0.25s ease,
+    backdrop-filter 0.25s ease;
+}
+
+.hn-player-video-card:hover::after {
+  opacity: 0;
+}
 }
 
 
