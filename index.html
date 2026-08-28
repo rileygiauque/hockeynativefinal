@@ -1947,26 +1947,83 @@ padding:
      FEATURED + PLAYER VIDEO LAYOUT
      ===================================================== */
 
-  .hn-video-column-title {
+.hn-video-column-title {
+  position: relative;
+
   flex: 0 0 auto;
 
-  min-height: 54px;
+  width: 100%;
+  height: 64px;
 
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+
+  overflow: hidden;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  border:
+    1px solid
+    rgba(147, 197, 253, 0.22);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8, 26, 46, 0.92),
+      rgba(18, 63, 104, 0.78),
+      rgba(8, 26, 46, 0.92)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 10px 28px rgba(0,0,0,0.18);
+}
+
+.hn-video-title-track {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+
+  white-space: nowrap;
+
+  animation:
+    hnVideoBannerScroll
+    18s
+    linear
+    infinite;
+}
+
+.hn-video-title-track span {
+  flex: 0 0 auto;
+
+  padding-right: 44px;
 
   color: white;
 
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1;
 
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
+}
 
-  text-align: center;
+@keyframes hnVideoBannerScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hn-video-title-track {
+    animation: none;
+  }
 }
   
   .hn-video-showcase {
@@ -2339,6 +2396,16 @@ min-height: 0;
 
   @media (max-width: 650px) {
 
+    .hn-video-column-title {
+  height: 58px;
+  margin-bottom: 14px;
+  border-radius: 13px;
+}
+
+.hn-video-title-track span {
+  font-size: 19px;
+}
+
 .hn-player-section {
   padding:
     18px
@@ -2447,9 +2514,15 @@ min-height: 0;
 
 <div class="hn-featured-video-wrap">
 
-  <div class="hn-video-column-title">
-    Enter the Start Zone, Wait for the Countdown, Compete to Win
+<div
+  class="hn-video-column-title"
+  aria-label="Enter the Start Zone, Wait for the Countdown, Compete to Win"
+>
+  <div class="hn-video-title-track" aria-hidden="true">
+    <span>Enter the Start Zone&nbsp;&nbsp;•&nbsp;&nbsp;Wait for the Countdown&nbsp;&nbsp;•&nbsp;&nbsp;Compete to Win</span>
+    <span>Enter the Start Zone&nbsp;&nbsp;•&nbsp;&nbsp;Wait for the Countdown&nbsp;&nbsp;•&nbsp;&nbsp;Compete to Win</span>
   </div>
+</div>
 
   <div class="hn-featured-video-card">
 
@@ -2490,9 +2563,15 @@ min-height: 0;
 
 <div class="hn-video-carousel-wrap">
 
-  <div class="hn-video-column-title">
-    Each attempt is recorded and timed in the app.
+<div
+  class="hn-video-column-title"
+  aria-label="Each attempt is recorded and timed in the app."
+>
+  <div class="hn-video-title-track" aria-hidden="true">
+    <span>Each attempt is recorded and timed in the app.&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+    <span>Each attempt is recorded and timed in the app.&nbsp;&nbsp;•&nbsp;&nbsp;</span>
   </div>
+</div>
 
   <button
     class="hn-video-arrow hn-video-arrow-left"
