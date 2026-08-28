@@ -2084,10 +2084,12 @@ padding:
     display: none;
   }
 
-    .hn-player-video-card::after {
-  content: "Each attempt is recorded\Aand timed in the app.";
+    .hn-video-carousel {
+  position: relative;
+}
 
-  white-space: pre-line;
+.hn-video-carousel::after {
+  content: "Each attempt is recorded and timed in the app.";
 
   position: absolute;
   inset: 0;
@@ -2096,34 +2098,37 @@ padding:
   align-items: center;
   justify-content: center;
 
-  padding: 24px;
+  padding: 40px;
 
   background:
-    rgba(30, 41, 59, 0.68);
+    rgba(22, 34, 50, 0.58);
 
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 
   color: white;
 
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 
   text-align: center;
 
-  z-index: 5;
+  border-radius: 18px;
+
+  z-index: 10;
 
   pointer-events: none;
 
   opacity: 1;
 
   transition:
-    opacity 0.25s ease,
-    backdrop-filter 0.25s ease;
+    opacity 0.3s ease,
+    backdrop-filter 0.3s ease;
 }
 
-.hn-player-video-card:hover::after {
+.hn-video-carousel:hover::after {
   opacity: 0;
 }
 }
