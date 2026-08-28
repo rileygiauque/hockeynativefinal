@@ -3484,44 +3484,57 @@ document
 
 <script>
 (function () {
-  const playerSection =
-    document.getElementById("realPlayers");
-
   const howSection =
     document.querySelector(".hn-how-section");
 
-  if (!playerSection || !howSection) {
+  const featuredVideoWrap =
+    document.querySelector(
+      ".hn-featured-video-wrap"
+    );
+
+  if (
+    !howSection ||
+    !featuredVideoWrap
+  ) {
     return;
   }
 
   const originalParent =
-    playerSection.parentNode;
+    howSection.parentNode;
 
   const originalNextSibling =
-    playerSection.nextSibling;
+    howSection.nextSibling;
 
-  function positionPlayerSection() {
+  function positionHowSection() {
+
     if (window.innerWidth <= 650) {
-      howSection.insertAdjacentElement(
+
+      featuredVideoWrap.insertAdjacentElement(
         "afterend",
-        playerSection
+        howSection
       );
+
     } else {
+
       originalParent.insertBefore(
-        playerSection,
+        howSection,
         originalNextSibling
       );
+
     }
+
   }
 
-  positionPlayerSection();
+  positionHowSection();
 
   window.addEventListener(
     "resize",
-    positionPlayerSection
+    positionHowSection
   );
+
 })();
 </script>
+    
 
 <script>
 (function () {
