@@ -2047,7 +2047,9 @@ padding:
 
   @media (min-width: 901px) {
 
-    
+  .hn-video-title-track-mobile {
+  display: none;
+}
 
 .hn-video-showcase {
   position: relative;
@@ -2508,6 +2510,14 @@ min-height: 0;
 
   @media (max-width: 650px) {
 
+    .hn-video-title-track-desktop {
+  display: none;
+}
+
+.hn-video-title-track-mobile {
+  display: flex;
+}
+
 .hn-video-column-title-static {
   height: auto;
   min-height: 58px;
@@ -2647,6 +2657,11 @@ min-height: 0;
   <div>Enter the Start Zone</div>
   <div>Wait for the Countdown</div>
   <div>Compete to Win</div>
+</div>
+
+<div class="hn-video-title-track hn-video-title-track-mobile" aria-hidden="true">
+  <span>Enter the Start Zone&nbsp;&nbsp;•&nbsp;&nbsp;Wait for the Countdown&nbsp;&nbsp;•&nbsp;&nbsp;Compete to Win</span>
+  <span>Enter the Start Zone&nbsp;&nbsp;•&nbsp;&nbsp;Wait for the Countdown&nbsp;&nbsp;•&nbsp;&nbsp;Compete to Win</span>
 </div>
 </div>
 
@@ -3349,6 +3364,28 @@ document
     rgba(0, 0, 0, 0.18);
 
   text-align: center;
+}
+
+@media (min-width: 901px) {
+
+  .hn-how-item {
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      border-color 0.22s ease;
+  }
+
+  .hn-how-item:hover {
+    transform: scale(1.045);
+
+    border-color:
+      rgba(147, 197, 253, 0.34);
+
+    box-shadow:
+      0 20px 44px
+      rgba(0, 0, 0, 0.26);
+  }
+
 }
 
 .hn-how-item-image {
