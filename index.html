@@ -2072,13 +2072,33 @@ padding:
   border-radius: 0;
 }
 
-  .hn-featured-video-wrap > .hn-video-column-title
-  .hn-video-title-track span {
-    font-size: 27px;
-    font-weight: 850;
+.hn-featured-video-wrap > .hn-video-column-title
+.hn-video-title-track {
+  width: 100%;
+  animation: none;
 
-    padding-right: 60px;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  align-items: center;
+}
+
+.hn-featured-video-wrap > .hn-video-column-title
+.hn-video-title-track span {
+  display: contents;
+}
+
+    .hn-video-title-track-desktop > div {
+  color: white;
+
+  font-size: 27px;
+  font-weight: 850;
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+
+  text-align: center;
+}
 
   .hn-video-column-title-static {
     display: none;
@@ -2619,10 +2639,11 @@ min-height: 0;
   class="hn-video-column-title"
   aria-label="Enter the Start Zone, Wait for the Countdown, Compete to Win"
 >
-  <div class="hn-video-title-track" aria-hidden="true">
-    <span>Enter the Start Zone&nbsp;&nbsp;•&nbsp;&nbsp;Wait for the Countdown&nbsp;&nbsp;•&nbsp;&nbsp;Compete to Win</span>
-    <span>Enter the Start Zone&nbsp;&nbsp;•&nbsp;&nbsp;Wait for the Countdown&nbsp;&nbsp;•&nbsp;&nbsp;Compete to Win</span>
-  </div>
+<div class="hn-video-title-track hn-video-title-track-desktop" aria-hidden="true">
+  <div>Enter the Start Zone</div>
+  <div>Wait for the Countdown</div>
+  <div>Compete to Win</div>
+</div>
 </div>
 
   <div class="hn-featured-video-card">
