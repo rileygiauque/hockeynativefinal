@@ -4305,15 +4305,26 @@ background-repeat: no-repeat;
       line-height: 1.5;
     }
 
-    .hn-country-list {
-      grid-template-columns:
-        repeat(
-          2,
-          minmax(0, 1fr)
-        );
+.hn-country-list {
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
 
-      gap: 9px;
-    }
+  gap: 9px;
+
+  max-height: 125px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  -webkit-overflow-scrolling: touch;
+
+  padding-right: 3px;
+
+  scrollbar-width: thin;
+}
 
     .hn-country-button {
       min-height: 58px;
